@@ -62,6 +62,9 @@ create table Reservacion_de_habitacion
     constraint PF_Reservacion_de_habitacion_x_Usuario foreign key (nombre_usuario) 
 	references Usuario(nombre_usuario),
 	
+    fecha_inicio DATE NOT NULL,
+    fecha_final DATE NOT NULL,
+    
     detalles VARCHAR(200) NOT NULL,
     estado bit NOT NULL DEFAULT 1
     
