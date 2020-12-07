@@ -45,7 +45,7 @@ DELIMITER $$
 	CREATE PROCEDURE PRO_ingresar_Calidad_habitacion(
 
 		ing_id_calidad_habitacion VARCHAR(5),
-		ing_nombre VARCHAR(30),
+		ing_nombre VARCHAR(50),
 		ing_detalles VARCHAR(200)
 		
         )
