@@ -7,13 +7,13 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
-public class Disponivilidad_agregar extends JPanel {
+public class Disponibilidad_agregar extends JPanel {
 	private JTextField textField;
 
 	/**
 	 * Create the panel.
 	 */
-	public Disponivilidad_agregar() {
+	public Disponibilidad_agregar() {
 		setLayout(null);
 		
 		JLabel lblAgregarDisponivilidad = new JLabel("Agregar disponivilidad");
