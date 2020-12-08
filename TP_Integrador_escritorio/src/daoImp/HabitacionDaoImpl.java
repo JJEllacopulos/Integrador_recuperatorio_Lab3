@@ -4,14 +4,12 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.List;
-
-import Entidad.Cuenta;
 import Entidades.Habitacion;
 import dao.HabitacionDao;
 
 public class HabitacionDaoImpl implements HabitacionDao {
 	
-}
+
 	private String host = "jdbc:mysql://localhost:3306/";
 	private String user = "root";
 	private String pass = "ROOT";
@@ -31,17 +29,11 @@ public class HabitacionDaoImpl implements HabitacionDao {
 				  try
 				  {
 					 cn = DriverManager.getConnection(host+dbName, user,pass);
-/*
-					 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_cuenta(?,?,?,?,?,?)");
-					 cst.setString(1, cuenta.getCbu_cuenta() ); 
-					 cst.setString(2, cuenta.getNombre_usuario());
-					 cst.setString(3, cuenta.getTipo_Cuenta() );//cuenta.getTipo_Cuenta()
-					 cst.setString(4, cuenta.getFecha_creacion()); 
-					 cst.setDouble(5, cuenta.getSaldo()); 
-					 cst.setString(6, cuenta.getAlias()); 
-					 
-*/
 
+					 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_Habitacion(?,?)");
+					 cst.setString(1, habitacion.getId_calidad_habitacion());
+					 cst.setString(1, habitacion.getDetalles());
+			 
 					 filas=cst.executeUpdate();
 				  }
 				  catch (Exception e) {
