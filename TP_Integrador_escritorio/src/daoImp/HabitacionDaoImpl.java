@@ -32,7 +32,7 @@ public class HabitacionDaoImpl implements HabitacionDao {
 
 					 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_Habitacion(?,?)");
 					 cst.setString(1, habitacion.getId_calidad_habitacion());
-					 cst.setString(1, habitacion.getDetalles());
+					 cst.setString(2, habitacion.getDetalles());
 			 
 					 filas=cst.executeUpdate();
 				  }
@@ -40,7 +40,7 @@ public class HabitacionDaoImpl implements HabitacionDao {
 					e.printStackTrace();
 				}
 	
-		return 0;
+		return filas;
 	}
 
 	@Override

@@ -13,7 +13,7 @@ create table Usuario
 	CONSTRAINT UC_usuario UNIQUE (dni_usuario, nombre_real, apellido_real),
     
 	contraseña_usuario VARCHAR(25) NOT NULL,
-	cuil_usuario VARCHAR(11) NOT NULL,
+	email_usuario VARCHAR(25) NOT NULL,
 	sexo VARCHAR(20) NOT NULL,
     
 	fecha_nacimiento DATE NOT NULL,

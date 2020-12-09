@@ -10,7 +10,7 @@ DELIMITER $$
 		ing_nombre_real VARCHAR(50),
 		ing_apellido_real VARCHAR(50),
 		ing_contraseña_usuario VARCHAR(25),
-		ing_cuil_usuario VARCHAR(11),
+		ing_email_usuario VARCHAR(11),
 		ing_sexo VARCHAR(20),
 		ing_fecha_nacimiento DATE
 		
@@ -19,9 +19,9 @@ DELIMITER $$
 	BEGIN
 
 		INSERT INTO Usuario (nombre_usuario, dni_usuario, nombre_real, apellido_real, contraseña_usuario, 
-        cuil_usuario, sexo, fecha_nacimiento)
+        email_usuario, sexo, fecha_nacimiento)
 		SELECT ing_nombre_usuario, ing_dni_usuario, ing_nombre_real, ing_apellido_real, ing_contraseña_usuario, 
-        ing_cuil_usuario, ing_sexo, ing_fecha_nacimiento;
+        ing_email_usuario, ing_sexo, ing_fecha_nacimiento;
 		
 	END$$
 

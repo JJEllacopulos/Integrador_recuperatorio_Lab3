@@ -9,7 +9,7 @@ CALL PRO_ingresar_Usuario
     'Sabrina',
     'Rodriges',
     'dgjio5643',
-    '74456724809',
+    'sabrrinaLMS@gmail.com',
     'Mujer',
     '1975-06-04'
 );
@@ -21,7 +21,7 @@ CALL PRO_ingresar_Usuario
     'Emanuel',
     'Gomes',
     'Cairo99',
-    '64486586042',
+    'Ema1999@gmail.com',
     'Hombre',
     '1999-04-10'
 );
@@ -33,7 +33,7 @@ CALL PRO_ingresar_Usuario
     'Cristian',
     'Garcia',
     'df8947ch',
-    '90793829504',
+    'Cristian@gmail.com',
     'Hombre',
     '1989-02-18'
 );
