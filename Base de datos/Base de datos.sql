@@ -1,7 +1,7 @@
 create schema Hoteleria;
 
 use Hoteleria;
-
+SET GLOBAL time_zone = '-3:00';
 create table Usuario
 (
 	nombre_usuario VARCHAR(25) NOT NULL,
@@ -13,7 +13,7 @@ create table Usuario
 	CONSTRAINT UC_usuario UNIQUE (dni_usuario, nombre_real, apellido_real),
     
 	contraseña_usuario VARCHAR(25) NOT NULL,
-	email_usuario VARCHAR(25) NOT NULL,
+	email_usuario VARCHAR(50) NOT NULL,
 	sexo VARCHAR(20) NOT NULL,
     
 	fecha_nacimiento DATE NOT NULL,

@@ -10,7 +10,7 @@ DELIMITER $$
 		ing_nombre_real VARCHAR(50),
 		ing_apellido_real VARCHAR(50),
 		ing_contraseña_usuario VARCHAR(25),
-		ing_email_usuario VARCHAR(11),
+		ing_email_usuario VARCHAR(50),
 		ing_sexo VARCHAR(20),
 		ing_fecha_nacimiento DATE
 		
