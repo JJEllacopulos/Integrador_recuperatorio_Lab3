@@ -1,6 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="javax.servlet.RequestDispatcher"%>
+<%@page import="Entidades.Usuario"%>
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
  pageEncoding="ISO-8859-1"%>
@@ -38,6 +39,8 @@
 
 
 <% 
+
+
 if(request.getAttribute("filas")!=null){
 	
 
@@ -60,9 +63,13 @@ if(filas > 0){%>
  <div class="form-row mt-4">
 
     <div class="col">
+<% if(request.getAttribute("usuario")!=null){
+	Usuario usuario = new Usuario();
+	usuario = (Usuario)request.getAttribute("usuario");
+%>	
 
-    	      <input type="text" class="form-control formu" name="txtUsuario" placeholder="Nombre de usuario" maxlength="20" title="Ingrese un usuario valido" required>
-    	
+    	      <input type="text" class="form-control formu" value="<%=usuario.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario" maxlength="20" title="Ingrese un usuario valido" required>
+<%} %>    	
     </div>
     </div>
      <div class="form-row mt-4">
@@ -85,7 +92,7 @@ if(filas > 0){%>
 
     <div class="col">
 
-      <input type="text" title="Ingrese un DNI valido " class="form-control formu" name="txtDni" placeholder="Dni" pattern="[0-9]{6,8}" required>
+      <input type="text" title="Ingrese un DNI valido "   class="form-control formu" name="txtDni" placeholder="Dni" pattern="[0-9]{6,8}" required>
     	
     </div>
     </div>

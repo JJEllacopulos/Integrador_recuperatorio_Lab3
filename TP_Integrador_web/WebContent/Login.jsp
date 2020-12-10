@@ -43,7 +43,24 @@
 <body>
 
 	<jsp:include page="Barra_inicio.html"></jsp:include>
+<% 
+
+
+if(request.getAttribute("mensajeError")!=null){
 	
+
+String mensajeError = (String)request.getAttribute("mensajeError");
+
+	
+
+if(mensajeError != ""){%>
+<div id="hola" class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>Hola!</strong> <%=mensajeError%>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% }}%>	
 	<div class="container">
 		<form method="post" action="ServletsLogin">
 			
@@ -67,6 +84,9 @@
 			</div>
 		</form>
 	</div>
+<script>	
+   $('.alert').alert()
 
+ </script>
 </body>
 </html>

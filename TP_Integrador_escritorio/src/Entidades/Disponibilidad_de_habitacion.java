@@ -2,7 +2,7 @@ package Entidades;
 
 import java.util.Date;
 
-public class Disponivilidad_de_habitacion {
+public class Disponibilidad_de_habitacion {
 	
 	private int id_reserva_de_habitacion;
 	private int id_habitacion;
@@ -13,11 +13,11 @@ public class Disponivilidad_de_habitacion {
 	private Boolean estado;
 	private Boolean reservacion;
 	
-	public Disponivilidad_de_habitacion() {
+	public Disponibilidad_de_habitacion() {
 		
 	}
 
-	public Disponivilidad_de_habitacion(int id_reserva_de_habitacion, int id_habitacion, String nombre_usuario,
+	public Disponibilidad_de_habitacion(int id_reserva_de_habitacion, int id_habitacion, String nombre_usuario,
 			Date fecha_inicio, Date fecha_final, String detalles, Boolean estado, Boolean reservacion) {
 		super();
 		this.id_reserva_de_habitacion = id_reserva_de_habitacion;
