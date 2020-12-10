@@ -42,6 +42,35 @@ public class HabitacionDaoImpl implements HabitacionDao {
 	
 		return filas;
 	}
+	
+	public int modify(Habitacion habitacion) {
+		// TODO Auto-generated method stub
+	
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			int	filas = 0;
+				Connection cn = null;
+				  try
+				  {
+					 cn = DriverManager.getConnection(host+dbName, user,pass);
+
+					 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_Habitacion(?,?,?)");
+					 cst.setInt(1, habitacion.getId_habitacion());
+					 cst.setString(2, habitacion.getId_calidad_habitacion());
+					 cst.setString(3, habitacion.getDetalles());
+			 
+					 filas=cst.executeUpdate();
+				  }
+				  catch (Exception e) {
+					e.printStackTrace();
+				}
+	
+		return filas;
+	}
 
 	@Override
 	public int delete(Habitacion habitacion_eliminar) {

@@ -10,17 +10,18 @@ public class Usuario {
 	private String apellido_real;
 	private String contrasena_usuario;
 	private String cuil_usuario;
+	private String email;
 	private String sexo;
-	private Date fecha_nacimiento;
+	private String fecha_nacimiento;
 	private boolean estado;
 	
 	public Usuario() {
 		
 	}
-	
+
 	public Usuario(String nombre_usuario, String dni_usuario, String nombre_real, String apellido_real,
-					String contrasena_usuario, String cuil_usuario, String sexo, Date fecha_nacimiento, 
-					boolean estado) {
+			String contrasena_usuario, String cuil_usuario, String email, String sexo, String fecha_nacimiento,
+			boolean estado) {
 		super();
 		this.nombre_usuario = nombre_usuario;
 		this.dni_usuario = dni_usuario;
@@ -28,6 +29,7 @@ public class Usuario {
 		this.apellido_real = apellido_real;
 		this.contrasena_usuario = contrasena_usuario;
 		this.cuil_usuario = cuil_usuario;
+		this.email = email;
 		this.sexo = sexo;
 		this.fecha_nacimiento = fecha_nacimiento;
 		this.estado = estado;
@@ -81,6 +83,14 @@ public class Usuario {
 		this.cuil_usuario = cuil_usuario;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getSexo() {
 		return sexo;
 	}
@@ -89,11 +99,11 @@ public class Usuario {
 		this.sexo = sexo;
 	}
 
-	public Date getFecha_nacimiento() {
+	public String getFecha_nacimiento() {
 		return fecha_nacimiento;
 	}
 
-	public void setFecha_nacimiento(Date fecha_nacimiento) {
+	public void setFecha_nacimiento(String fecha_nacimiento) {
 		this.fecha_nacimiento = fecha_nacimiento;
 	}
 
@@ -104,6 +114,6 @@ public class Usuario {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
-	
+
 	
 }

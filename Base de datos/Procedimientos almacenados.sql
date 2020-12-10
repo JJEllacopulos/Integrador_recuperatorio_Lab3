@@ -57,6 +57,18 @@ DELIMITER $$
 		
 	END$$
     
+DELIMITER $$
+    CREATE PROCEDURE PRO_Listar_Calidad_habitacion(
+        
+		)
+    
+	BEGIN
+	
+		SELECT * FROM Calidad_habitacion;
+	
+
+	END$$
+    
 -- Habitacion
 
 DELIMITER $$
@@ -137,7 +149,19 @@ DELIMITER $$
 		SELECT ing_id_habitacion, ing_nombre_usuario, ing_fecha_inicio, ing_fecha_final, ing_detalles;
 		
 	END$$
+
+DELIMITER $$
+    CREATE PROCEDURE PRO_Listar_Disponivilidad_de_habitacion(
+        
+		)
     
+	BEGIN
+	
+		SELECT * FROM Disponivilidad_de_habitacion;
+	
+
+END$$
+
 -- Reservacion_de_habitacion
 
 DELIMITER $$
@@ -154,4 +178,16 @@ DELIMITER $$
 		SELECT ing_id_disponivilidad_de_habitacion, ing_nombre_usuario;
 		
 	END$$
+
+DELIMITER $$
+    CREATE PROCEDURE PRO_Listar_Reservacion_de_habitacion(
+        
+		)
+    
+	BEGIN
+	
+		SELECT * FROM Reservacion_de_habitacion;
+	
+
+END$$
 
