@@ -2,6 +2,8 @@ package Entidades;
 
 public class Calidad_habitacion {
 	
+	
+
 	private String id_calidad_habitacion;
 	private String nombre;
 	private String detalles;
@@ -50,5 +52,9 @@ public class Calidad_habitacion {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
-	
+	@Override
+	public String toString() {
+		return nombre;
+	}
+
 }

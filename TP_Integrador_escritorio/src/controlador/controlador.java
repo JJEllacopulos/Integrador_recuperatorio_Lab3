@@ -27,6 +27,8 @@ public class controlador implements ActionListener{
 	private Habitaciones_listar habitaciones_listar;
 	private Habitaciones_modificar habitaciones_modificar;
 	private Disponibilidad_agregar disponibilidad_agregar;
+	Calidad_habitacion calidad = new Calidad_habitacion();
+	Habitacion habitacion = new Habitacion();
 	private HabitacionNegocio negHabitacion = new HabitacionNegocioImpl();
 	private Calidad_habitacion_Negocio negCalidad = new Calidad_habitacion_NegocioImpl();
 	
@@ -93,7 +95,19 @@ public class controlador implements ActionListener{
 		ventana_principal.getContentPane().revalidate();
 	}
 	public void EventoClick_Agregar_Aceptar(ActionEvent a) {
-	
+		String mensaje = "";
+		calidad = (Calidad_habitacion)this.habitaciones_agregar.getCbCalidad().getSelectedItem();
+		String descripcion = this.habitaciones_agregar.getTextoDescripcion().getText();
+		if(!descripcion.equals("")  || calidad.getId_calidad_habitacion().equals("") ) {
+		habitacion.setDetalles(descripcion);
+		habitacion.setId_calidad_habitacion(calidad.getId_calidad_habitacion());
+		if(negHabitacion.insert(habitacion)>0) {
+			mensaje = "Se agregó correctamente";
+		}
+		}else {
+			mensaje = "Por favor, verifique los datos cargados.";
+		}
+		JOptionPane.showMessageDialog(null, mensaje);
 	}
 	
 	public void inicializar()
@@ -106,7 +120,5 @@ public class controlador implements ActionListener{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
 	
 }
