@@ -63,13 +63,10 @@ if(filas > 0){%>
  <div class="form-row mt-4">
 
     <div class="col">
-<% if(request.getAttribute("usuario")!=null){
-	Usuario usuario = new Usuario();
-	usuario = (Usuario)request.getAttribute("usuario");
-%>	
 
-    	      <input type="text" class="form-control formu" value="<%=usuario.getNombre_usuario()%>" name="txtUsuario" placeholder="Nombre de usuario" maxlength="20" title="Ingrese un usuario valido" required>
-<%} %>    	
+
+    <input type="text" class="form-control formu"  name="txtUsuario" placeholder="Nombre de usuario" maxlength="20" title="Ingrese un usuario valido" required>
+  	
     </div>
     </div>
      <div class="form-row mt-4">
