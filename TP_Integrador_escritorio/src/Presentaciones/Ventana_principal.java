@@ -126,13 +126,13 @@ public class Ventana_principal extends JFrame {
 		*/
 	}
 
-	public JPanel getContentPane() {
+	/*public JPanel getContentPane() {
 		return contentPane;
 	}
 
 	public void setContentPane(JPanel contentPane) {
 		this.contentPane = contentPane;
-	}
+	}*/
 
 	public void setMenuBar(JMenuBar menuBar) {
 		this.menuBar = menuBar;
