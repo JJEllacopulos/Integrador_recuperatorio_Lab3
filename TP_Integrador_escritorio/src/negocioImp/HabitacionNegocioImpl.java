@@ -1,5 +1,6 @@
 package negocioImp;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Entidades.Habitacion;
@@ -9,6 +10,7 @@ import negocio.HabitacionNegocio;
 
 public class HabitacionNegocioImpl implements HabitacionNegocio{
 	HabitacionDao habitacionDao = new HabitacionDaoImpl();
+	List<Habitacion> habitacion = new ArrayList<Habitacion>();
 	@Override
 	public int insert(Habitacion habitacion) {
 		// TODO Auto-generated method stub
@@ -27,7 +29,9 @@ public class HabitacionNegocioImpl implements HabitacionNegocio{
 	@Override
 	public List<Habitacion> readAll() {
 		// TODO Auto-generated method stub
-		return null;
+		habitacion = habitacionDao.readAll();
+		
+		return habitacion;
 	}
 
 	

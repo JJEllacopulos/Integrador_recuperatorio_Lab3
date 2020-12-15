@@ -126,7 +126,7 @@ DELIMITER $$
     
 	BEGIN
 	
-		SELECT * FROM Habitacion;
+		SELECT * FROM Habitacion where estado = 1;
 	
 
 END$$

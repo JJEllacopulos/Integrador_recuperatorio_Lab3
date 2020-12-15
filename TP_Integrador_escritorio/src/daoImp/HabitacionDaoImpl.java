@@ -3,7 +3,11 @@ package daoImp;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
+
+import Entidades.Calidad_habitacion;
 import Entidades.Habitacion;
 import dao.HabitacionDao;
 
@@ -79,9 +83,45 @@ public class HabitacionDaoImpl implements HabitacionDao {
 	}
 
 	@Override
-	public List<Habitacion> readAll() {
+	public ArrayList<Habitacion> readAll() {
 		// TODO Auto-generated method stub
-		return null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<Habitacion> x = new ArrayList<Habitacion>();
+			
+			Connection cn = null;
+			
+			try {
+				
+				cn = DriverManager.getConnection(host+dbName, user,pass);
+				CallableStatement st = cn.prepareCall("CALL PRO_Listar_Habitacion()");
+				
+				
+				ResultSet resultado = st.executeQuery();
+				while(resultado.next()){
+					
+					
+					Habitacion aux = new Habitacion();
+					aux.setId_habitacion(resultado.getInt("id_habitacion"));
+					aux.setDetalles(resultado.getString("detalles"));
+					aux.setId_calidad_habitacion((resultado.getString("detalles")));
+			
+					x.add(aux);
+					
+				}
+				
+			}
+			catch(Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+			return x;
 	}
 
 }
