@@ -194,7 +194,7 @@ DELIMITER $$
 		SELECT ing_id_disponivilidad_de_habitacion, ing_nombre_usuario;
 		
 	END$$
-
+    
 DELIMITER $$
     CREATE PROCEDURE PRO_Listar_Reservacion_de_habitacion(
         
@@ -207,22 +207,37 @@ DELIMITER $$
 
 END$$
 
+
 DELIMITER $$
-CREATE PROCEDURE PRO_DisponibilidadPorFechas(
-        ing_Fecha1 date,
-        ing_Fecha2 date,
-        ing_Calidad varchar(30)
+CREATE PROCEDURE PRO_DisponibilidadPorFechas(		
+		ing_Fecha1 date,
+		ing_Fecha2 date,
+		ing_Calidad varchar(30)
         )
+		
+	BEGIN
 
-    BEGIN
-
-        SELECT Habitacion.id_habitacion, Calidad_habitacion.nombre, Calidad_habitacion.detalles
+		SELECT Habitacion.id_habitacion, Calidad_habitacion.nombre, Calidad_habitacion.detalles
         FROM  Habitacion
         INNER JOIN Calidad_habitacion ON Habitacion.id_calidad_habitacion = Calidad_habitacion.id_calidad_habitacion
         WHERE Habitacion.id_habitacion NOT IN (
-        SELECT Disponivilidad_de_habitacion.id_habitacion
+		SELECT Disponivilidad_de_habitacion.id_habitacion
         FROM  Disponivilidad_de_habitacion
         WHERE (ing_Fecha1 BETWEEN Disponivilidad_de_habitacion.fecha_inicio AND Disponivilidad_de_habitacion.fecha_final) 
         OR (ing_Fecha2 BETWEEN Disponivilidad_de_habitacion.fecha_inicio AND Disponivilidad_de_habitacion.fecha_final) 
-        ) AND Calidad_habitacion.nombre = ing_Calidad;
-    END$$
+		) AND Calidad_habitacion.nombre = ing_Calidad;
+	END$$
+
+
+
+DELIMITER $$   
+   CREATE PROCEDURE PRO_Listar_Disponivilidad_de_habitacion(
+        
+		)
+    
+	BEGIN
+	
+		 select max(id_disponivilidad_de_habitacion) as MaxId from Disponivilidad_de_habitacion;	
+
+END$$ 
+    

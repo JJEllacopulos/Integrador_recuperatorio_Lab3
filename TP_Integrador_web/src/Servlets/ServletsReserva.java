@@ -12,12 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import Entidades.Calidad_habitacion;
+import Entidades.Disponibilidad_de_habitacion;
 import Entidades.Usuario;
 import Negocio.Calidad_habitacion_Negocio;
 import Negocio.HabitacionNegocio;
+import Negocio.Disponibilidad_habitacion_Negocio;
+import NegocioImpl.Disponibilidad_habitacion_NegocioImpl;
 import NegocioImpl.Calidad_habitacion_NegocioImpl;
 import NegocioImpl.HabitacionNegocioImpl;
-//import Entidades.Disponibilidad_de_habitacion;
+
 
 /**
  * Servlet implementation class ServletsReserva
@@ -63,13 +66,13 @@ public class ServletsReserva extends HttpServlet {
 		doGet(request, response);
 	    HttpSession session = request.getSession();
 	    Usuario usuario = new Usuario();
-	  //  Disponibilidad_de_habitacion dispo = new Disponibilidad_de_habitacion();
-	   
+	    Disponibilidad_de_habitacion dispo = new Disponibilidad_de_habitacion();
+	    Disponibilidad_habitacion_Negocio NegDispo = new Disponibilidad_habitacion_NegocioImpl();
 	    
 	    if(request.getParameter("btnDisponibilidad")!=null) {
 	    	 
-	    	//CalHab= CalidadNeg.readAll();
-	    	//request.setAttribute("CalidadHabitacion", CalHab);
+	    	CalHab= CalidadNeg.readAll();
+	    	request.setAttribute("CalidadHabitacion", CalHab);
 
 	    	CalHab2 = CalidadNeg.ListarDispo(request.getParameter("txtFechaCheckIn"),request.getParameter("txtFechaCheckOut"),request.getParameter("ddl_Calidad_Habitacion"));
 	    	 	    	
@@ -88,10 +91,22 @@ public class ServletsReserva extends HttpServlet {
 	    
 
 	    if(request.getParameter("btn_SeleccionHabitacion")!=null) {
-	    	 
-	    	request.getParameter("id_hab");
-	    	//RequestDispatcher rd = request.getRequestDispatcher("/Reservar_habitacion.jsp");   
-	        //rd.forward(request, response); 
+	    	 	    		    	
+	    	String F1=request.getParameter("Fecha1");
+	    	String F2=request.getParameter("Fecha2");	    	
+
+	    	usuario= (Usuario)session.getAttribute("userSession");
+	    	
+	    	dispo.setId_habitacion(Integer.parseInt(request.getParameter("id_hab")));
+	    	dispo.setFecha_inicio(F1);
+	    	dispo.setFecha_final(F2);
+	    	dispo.setNombre_usuario(usuario.getNombre_usuario());
+	    	dispo.setDetalles("Reserva");
+	    	
+	    	NegDispo.insert(dispo);
+	    		    	
+	    	RequestDispatcher rd = request.getRequestDispatcher("/Reservar_habitacion.jsp");   
+	        rd.forward(request, response); 
 	    	
 		}
 	    
