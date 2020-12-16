@@ -21,9 +21,12 @@ public class HabitacionNegocioImpl implements HabitacionNegocio{
 	}
 
 	@Override
-	public int delete(Habitacion habitacion_eliminar) {
+	public int delete(String id) {
 		// TODO Auto-generated method stub
-		return 0;
+		int filas = 0;
+		filas = habitacionDao.delete(id);
+		
+		return filas;
 	}
 
 	@Override

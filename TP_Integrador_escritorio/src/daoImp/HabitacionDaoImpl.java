@@ -77,9 +77,31 @@ public class HabitacionDaoImpl implements HabitacionDao {
 	}
 
 	@Override
-	public int delete(Habitacion habitacion_eliminar) {
+	public int delete(String id) {
 		// TODO Auto-generated method stub
-		return 0;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	int	filas = 0;
+		Connection cn = null;
+		  try
+		  {
+			 cn = DriverManager.getConnection(host+dbName, user,pass);
+
+			 CallableStatement cst = cn.prepareCall("CALL PRO_Borrar_Habitacion(?)");
+			 cst.setString(1, id);
+		
+	 
+			 filas=cst.executeUpdate();
+		  }
+		  catch (Exception e) {
+			e.printStackTrace();
+		}
+
+return filas;
 	}
 
 	@Override

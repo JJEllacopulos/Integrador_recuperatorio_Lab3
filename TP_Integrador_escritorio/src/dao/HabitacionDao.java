@@ -7,7 +7,7 @@ public interface HabitacionDao {
 	
 	public int insert(Habitacion habitacion);
 	public int modify(Habitacion habitacion);
-	public int delete(Habitacion habitacion_eliminar);
+	public int delete(String id);
 	public List<Habitacion> readAll();
 
 }

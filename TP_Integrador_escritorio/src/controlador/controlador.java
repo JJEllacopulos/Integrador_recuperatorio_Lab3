@@ -33,6 +33,7 @@ public class controlador implements ActionListener{
 	private Calidad_habitacion_Negocio negCalidad = new Calidad_habitacion_NegocioImpl();
 	ArrayList<Calidad_habitacion> listaCalidad = new ArrayList<Calidad_habitacion>();
 	String mensaje = "";
+	
 	public controlador(Ventana_principal vista) {
 		
 		this.ventana_principal = vista;
@@ -50,6 +51,7 @@ public class controlador implements ActionListener{
 		
 		this.habitaciones_agregar.getBtnAceptar().addActionListener(a->EventoClick_Agregar_Aceptar(a));
 		this.habitaciones_modificar.getBtnAceptar().addActionListener(a->EventoClick_Modificar_Aceptar(a));
+		this.habitaciones_borrar.getBtnBorrar().addActionListener(a->EventoClick_Borrar_Aceptar(a));
 	}
 	
 	
@@ -112,6 +114,7 @@ public class controlador implements ActionListener{
 		}
 		JOptionPane.showMessageDialog(null, mensaje);
 	}
+	
 	public void EventoClick_Modificar_Aceptar(ActionEvent a) {
 		
 	calidad = (Calidad_habitacion)this.habitaciones_modificar.getComboBoxCalidad().getSelectedItem();
@@ -134,6 +137,22 @@ public class controlador implements ActionListener{
 	}
 	JOptionPane.showMessageDialog(null, mensaje);
 	}
+	
+	public void EventoClick_Borrar_Aceptar(ActionEvent a) {
+		String id = this.habitaciones_borrar.getTextNroHabitacion().getText();
+		if(id!= "") {
+			if(negHabitacion.delete(id)>0) {
+				mensaje = "Se eliminó correctamente";
+			}else {
+				mensaje = "Error al eliminar, verifique el ID.";
+			}
+		}
+		else {
+			mensaje = "Tiene que cargar el Id que desea eliminar.";
+		}
+		JOptionPane.showMessageDialog(null, mensaje);
+	}
+	
 	public void inicializar()
 	{
 		this.ventana_principal.setVisible(true);;

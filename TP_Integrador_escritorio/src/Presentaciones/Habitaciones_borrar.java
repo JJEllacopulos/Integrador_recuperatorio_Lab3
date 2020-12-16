@@ -11,6 +11,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 
 public class Habitaciones_borrar extends JPanel {
+	private JTextField textNroHabitacion;
+	JButton btnBorrar;
 	
 	
 	
@@ -25,20 +27,40 @@ public class Habitaciones_borrar extends JPanel {
 		lblBorrarHabitacion.setBounds(150, 25, 127, 14);
 		add(lblBorrarHabitacion);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(150, 70, 28, 20);
-		add(comboBox);
-		
-		JLabel lblHabitacion = new JLabel("Habitacion");
+		JLabel lblHabitacion = new JLabel("Nro Habitacion");
 		lblHabitacion.setBounds(50, 70, 90, 14);
 		add(lblHabitacion);
 		
-		JButton btnBorrar = new JButton("Borrar");
+		btnBorrar = new JButton("Borrar");
 		btnBorrar.setBounds(150, 119, 89, 23);
 		add(btnBorrar);
+		
+		textNroHabitacion = new JTextField();
+		textNroHabitacion.setBounds(139, 67, 97, 20);
+		add(textNroHabitacion);
+		textNroHabitacion.setColumns(10);
 		
 		
 
 	}
+	public JTextField getTextNroHabitacion() {
+		return textNroHabitacion;
+	}
+
+
+	public void setTextNroHabitacion(JTextField textNroHabitacion) {
+		this.textNroHabitacion = textNroHabitacion;
+	}
+
+
+	public JButton getBtnBorrar() {
+		return btnBorrar;
+	}
+
+
+	public void setBtnBorrar(JButton btnBorrar) {
+		this.btnBorrar = btnBorrar;
+	}
+
 
 }

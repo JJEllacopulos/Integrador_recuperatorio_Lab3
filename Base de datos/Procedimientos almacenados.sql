@@ -104,6 +104,22 @@ DELIMITER $$
 	END IF;
 
 END$$
+DELIMITER $$
+    CREATE PROCEDURE PRO_Borrar_Habitacion(
+		
+        ing_id_habitacion INT
+
+		)
+    
+	BEGIN
+	
+	IF EXISTS(SELECT * FROM Habitacion WHERE id_habitacion = ing_id_habitacion) THEN
+		
+		Update Habitacion Set estado = 0 Where id_habitacion = ing_id_habitacion;
+        
+	END IF;
+
+END$$
 
 DELIMITER $$
     CREATE PROCEDURE PRO_Buscar_Habitacion(
