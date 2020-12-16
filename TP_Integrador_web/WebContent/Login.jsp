@@ -42,7 +42,7 @@
 
 <body>
 
-	<jsp:include page="Barra_inicio.html"></jsp:include>
+<jsp:include page="Barra_inicio.jsp"></jsp:include>
 <% 
 
 
@@ -76,7 +76,6 @@ if(mensajeError != ""){%>
 			
 			  <div class="form-label-group">
 			<input type="submit" class="btn btn-success centrar" value="Aceptar" name="btnAceptar">
-			<input type="submit" class="btn btn-primary centrar" value="Registrarse" name="btnRegistrarse">
 			</div>			
 
 			  <div class="form-label-group">

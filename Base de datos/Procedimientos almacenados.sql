@@ -257,4 +257,3 @@ DELIMITER $$
 		SELECT ing_id_habitacion, ing_fecha_inicio, ing_fecha_final, ing_detalles, 1 ;
 		
 	END$$
-

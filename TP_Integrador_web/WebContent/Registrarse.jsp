@@ -36,7 +36,7 @@
 </head>
 <body>
 
-
+<jsp:include page="Barra_inicio.jsp"></jsp:include>
 
 <% 
 

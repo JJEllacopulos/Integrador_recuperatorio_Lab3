@@ -1,16 +1,16 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Barra</title>
 <style>
 .margen{
 margin-left: 70%;
 }
 </style>
-<meta charset="ISO-8859-1">
-<title>Menu</title>
-
 </head>
-<body>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-primary">
   <div class="container-fluid">
@@ -20,25 +20,16 @@ margin-left: 70%;
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav margen">
-        <li class="nav-item">
-          <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="ServletsReserva?link_1=1">Reservar habitación</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-light" href="#">Mis Reservas</a>
-        </li>
+       
            <li class="nav-item">
-          <a class="nav-link text-light" href="#">Mis datos</a>
+          <a href="Login.jsp"class="nav-link text-light" href="#">Iniciar Sesión</a>
         </li>
              <li class="nav-item">
-          <a class="nav-link text-light" href="#">Cerrar sesión</a>
+          <a class="nav-link text-light" href="ServletsLogin?btnRegistrarse=1">Registrarse</a>
         </li>
       </ul>
     </div>
   </div>
 </nav>
-</body>
 </body>
 </html>
