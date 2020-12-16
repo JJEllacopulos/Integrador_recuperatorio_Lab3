@@ -34,7 +34,7 @@ DELIMITER $$
     
 	BEGIN
 	
-		SELECT * FROM direccion WHERE nombre_usuario = ing_nombre_usuario AND estado = 1;
+		SELECT * FROM usuario WHERE nombre_usuario = ing_nombre_usuario AND estado = 1;
 	
 
 END$$
