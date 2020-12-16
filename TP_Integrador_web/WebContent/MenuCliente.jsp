@@ -26,7 +26,7 @@ margin-left: 55%;
           <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="#">Reservar habitación</a>
+          <a class="nav-link text-light" href="ServletsReserva?link_1=1">Reservar habitación</a>
         </li>
         <li class="nav-item">
           <a class="nav-link text-light" href="#">Mis Reservas</a>

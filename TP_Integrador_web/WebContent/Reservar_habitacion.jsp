@@ -42,9 +42,14 @@
 
 
 <body>
+
+<jsp:include page="MenuCliente.jsp"></jsp:include>
+
 	<form action="ServletsReserva" method="post">
+	
+ <div class="container">
 <div class="form-row mt-4">
-    <div class="col-8">
+    <div class="col-8" >
     <%if (request.getAttribute("Fecha1")!=null ) { %>
     
  <h6>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Check-in:</h6>
@@ -76,6 +81,7 @@
 		
 		</select>
 		 </div>
+		 
 		 <div class="col-8">
 		 <%if (request.getAttribute("Fecha2")!=null ) { %>	
 		 <h6>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Check-Out:</h6>
@@ -88,9 +94,11 @@
     <input type="text" class="form-control formu" placeholder="Seleccionar Fecha de Check-out" onfocus="(this.type='date')" onblur="(this.type='text')" name="txtFechaCheckOut" required >
      <%} %>
   </div>
+  
+  <input type="submit"  class="btn btn-success mt-5 centrar" value="Buscar Disponibilidad" name="btnDisponibilidad">
       </div>	
-      <input type="submit"  class="btn btn-danger mt-5 centrar" value="Cargar" name="btnCarga">
-   <input type="submit"  class="btn btn-success mt-5 centrar" value="Buscar Disponibilidad" name="btnDisponibilidad">
+</div>
+   
  <%
 	
 	ArrayList<Calidad_habitacion> lista1 = new ArrayList<Calidad_habitacion>();
@@ -117,7 +125,7 @@
   </thead>
   <tbody>
     <tr>
-      <td class="text"><b><%= e.getId_calidad_habitacion() %></b></td>
+      <td class="text"><b><%= e.getId_calidad_habitacion() %> <input type="hidden" name="id_hab" value="<%= e.getId_calidad_habitacion() %>"></b></td>
       <td class="text"><b><%= e.getNombre() %></b></td>
        <td class="text"><b><%= e.getDetalles() %></b></td>
     <td> <button type="submit" class="btn btn-primary btnDD" name="btn_SeleccionHabitacion" >Reservar</button> </td>
@@ -127,8 +135,6 @@
      <% } }%>
   </tbody>
 </table>
-
-
 
 
    <script>

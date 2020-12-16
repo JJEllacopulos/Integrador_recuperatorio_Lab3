@@ -44,6 +44,15 @@ public class ServletsReserva extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		
+	    if(request.getParameter("link_1")!=null) {
+	    	
+	    	CalHab= CalidadNeg.readAll();
+	    	request.setAttribute("CalidadHabitacion", CalHab);
+
+			RequestDispatcher rd = request.getRequestDispatcher("/Reservar_habitacion.jsp");   
+	        rd.forward(request, response); 
+		}
 	}
 
 	/**
@@ -55,11 +64,12 @@ public class ServletsReserva extends HttpServlet {
 	    HttpSession session = request.getSession();
 	    Usuario usuario = new Usuario();
 	  //  Disponibilidad_de_habitacion dispo = new Disponibilidad_de_habitacion();
+	   
 	    
 	    if(request.getParameter("btnDisponibilidad")!=null) {
 	    	 
-	    	CalHab= CalidadNeg.readAll();
-	    	request.setAttribute("CalidadHabitacion", CalHab);
+	    	//CalHab= CalidadNeg.readAll();
+	    	//request.setAttribute("CalidadHabitacion", CalHab);
 
 	    	CalHab2 = CalidadNeg.ListarDispo(request.getParameter("txtFechaCheckIn"),request.getParameter("txtFechaCheckOut"),request.getParameter("ddl_Calidad_Habitacion"));
 	    	 	    	
@@ -76,17 +86,12 @@ public class ServletsReserva extends HttpServlet {
 	        rd.forward(request, response); 
 		}
 	    
-	    if(request.getParameter("btnCarga")!=null) {
-	    	 
-	    	CalHab= CalidadNeg.readAll();
-	    	request.setAttribute("CalidadHabitacion", CalHab);
 
-			RequestDispatcher rd = request.getRequestDispatcher("/Reservar_habitacion.jsp");   
-	        rd.forward(request, response); 
-		}
-	    
 	    if(request.getParameter("btn_SeleccionHabitacion")!=null) {
 	    	 
+	    	request.getParameter("id_hab");
+	    	//RequestDispatcher rd = request.getRequestDispatcher("/Reservar_habitacion.jsp");   
+	        //rd.forward(request, response); 
 	    	
 		}
 	    
