@@ -34,6 +34,14 @@ public class HabitacionNegocioImpl implements HabitacionNegocio{
 		return habitacion;
 	}
 
+	@Override
+	public int modify(Habitacion habitacion) {
+		// TODO Auto-generated method stub
+		int filas = 0;
+		filas = habitacionDao.modify(habitacion);
+		return filas;
+	}
+
 	
 
 	

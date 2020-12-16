@@ -2,7 +2,7 @@ package Entidades;
 
 public class Habitacion {
 	
-	private int id_habitacion;
+	private String id_habitacion;
 	private String id_calidad_habitacion;
 	private String detalles;
 	private boolean estado;
@@ -11,7 +11,7 @@ public class Habitacion {
 		
 	}
 	
-	public Habitacion(int id_habitacion, String id_calidad_habitacion, String detalles, boolean estado) {
+	public Habitacion(String id_habitacion, String id_calidad_habitacion, String detalles, boolean estado) {
 		super();
 		this.id_habitacion = id_habitacion;
 		this.id_calidad_habitacion = id_calidad_habitacion;
@@ -19,12 +19,12 @@ public class Habitacion {
 		this.estado = estado;
 	}
 
-	public int getId_habitacion() {
+	public String getId_habitacion() {
 		return id_habitacion;
 	}
 
-	public void setId_habitacion(int id_habitacion) {
-		this.id_habitacion = id_habitacion;
+	public void setId_habitacion(String id) {
+		this.id_habitacion = id;
 	}
 
 	public String getId_calidad_habitacion() {
@@ -50,5 +50,7 @@ public class Habitacion {
 	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
+
+
 	
 }

@@ -62,8 +62,8 @@ public class HabitacionDaoImpl implements HabitacionDao {
 				  {
 					 cn = DriverManager.getConnection(host+dbName, user,pass);
 
-					 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_Habitacion(?,?,?)");
-					 cst.setInt(1, habitacion.getId_habitacion());
+					 CallableStatement cst = cn.prepareCall("CALL PRO_Modificar_Habitacion(?,?,?)");
+					 cst.setString(1, habitacion.getId_habitacion());
 					 cst.setString(2, habitacion.getId_calidad_habitacion());
 					 cst.setString(3, habitacion.getDetalles());
 			 
@@ -106,7 +106,7 @@ public class HabitacionDaoImpl implements HabitacionDao {
 					
 					
 					Habitacion aux = new Habitacion();
-					aux.setId_habitacion(resultado.getInt("id_habitacion"));
+					aux.setId_habitacion(resultado.getString("id_habitacion"));
 					aux.setDetalles(resultado.getString("detalles"));
 					aux.setId_calidad_habitacion((resultado.getString("detalles")));
 			

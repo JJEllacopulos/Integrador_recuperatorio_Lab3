@@ -31,7 +31,8 @@ public class controlador implements ActionListener{
 	Habitacion habitacion = new Habitacion();
 	private HabitacionNegocio negHabitacion = new HabitacionNegocioImpl();
 	private Calidad_habitacion_Negocio negCalidad = new Calidad_habitacion_NegocioImpl();
-	
+	ArrayList<Calidad_habitacion> listaCalidad = new ArrayList<Calidad_habitacion>();
+	String mensaje = "";
 	public controlador(Ventana_principal vista) {
 		
 		this.ventana_principal = vista;
@@ -48,12 +49,13 @@ public class controlador implements ActionListener{
 		this.ventana_principal.getMntmAgregar_dis().addActionListener(a->EventoClickMenu_disponibilidad_agregar(a));
 		
 		this.habitaciones_agregar.getBtnAceptar().addActionListener(a->EventoClick_Agregar_Aceptar(a));
+		this.habitaciones_modificar.getBtnAceptar().addActionListener(a->EventoClick_Modificar_Aceptar(a));
 	}
 	
 	
 	public void  EventoClickMenu_habitacion_agregar(ActionEvent a)
 	{		
-		ArrayList<Calidad_habitacion> listaCalidad = new ArrayList<Calidad_habitacion>();
+		
 		listaCalidad = negCalidad.readAll();
 		ventana_principal.getContentPane().removeAll();
 		this.habitaciones_agregar.setCbCalidad(listaCalidad);
@@ -79,7 +81,8 @@ public class controlador implements ActionListener{
 	}
 	
 	public void  EventoClickMenu_habitaciones_modificar(ActionEvent a)
-	{		
+	{	listaCalidad = negCalidad.readAll();
+		this.habitaciones_modificar.setComboBoxCalidad(listaCalidad);
 		ventana_principal.getContentPane().removeAll();
 		ventana_principal.getContentPane().add(habitaciones_modificar);
 		ventana_principal.getContentPane().repaint();
@@ -95,7 +98,7 @@ public class controlador implements ActionListener{
 		ventana_principal.getContentPane().revalidate();
 	}
 	public void EventoClick_Agregar_Aceptar(ActionEvent a) {
-		String mensaje = "";
+		
 		calidad = (Calidad_habitacion)this.habitaciones_agregar.getCbCalidad().getSelectedItem();
 		String descripcion = this.habitaciones_agregar.getTextoDescripcion().getText();
 		if(!descripcion.equals("")  || calidad.getId_calidad_habitacion().equals("") ) {
@@ -109,7 +112,28 @@ public class controlador implements ActionListener{
 		}
 		JOptionPane.showMessageDialog(null, mensaje);
 	}
+	public void EventoClick_Modificar_Aceptar(ActionEvent a) {
+		
+	calidad = (Calidad_habitacion)this.habitaciones_modificar.getComboBoxCalidad().getSelectedItem();
+	String descripcion = this.habitaciones_modificar.getTextDetalle().getText();
+	if(!descripcion.equals("")  || calidad.getId_calidad_habitacion().equals("") ) {
+	String id = this.habitaciones_modificar.getTextNroHabitacion().getText();
 	
+	habitacion.setId_habitacion(id);
+	habitacion.setDetalles(descripcion);
+	habitacion.setId_calidad_habitacion(calidad.getId_calidad_habitacion());
+	
+	if(negHabitacion.modify(habitacion)>0) {
+		mensaje = "Se modificó correctamente";
+	}else {
+		mensaje = "Error al intentar modificar";
+	}
+	}
+	else {
+		mensaje = "Verifique los datos";
+	}
+	JOptionPane.showMessageDialog(null, mensaje);
+	}
 	public void inicializar()
 	{
 		this.ventana_principal.setVisible(true);;

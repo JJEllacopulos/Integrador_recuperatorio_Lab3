@@ -1,6 +1,7 @@
 package Presentaciones;
 
 import java.awt.Font;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -8,13 +9,18 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Entidades.Calidad_habitacion;
+
 public class Habitaciones_modificar extends JPanel {
 
 	/**
 	 * Create the panel.
 	 */
-	private JTextField textField;
 	
+	
+	JButton btnAceptar;
+	JComboBox comboBoxCalidad = new JComboBox();
+	JTextField textNroHabitacion = new JTextField();
 	public Habitaciones_modificar() {
 		
 		setLayout(null);
@@ -24,37 +30,65 @@ public class Habitaciones_modificar extends JPanel {
 		lblModificarHabitacion.setBounds(150, 25, 146, 19);
 		add(lblModificarHabitacion);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(150, 107, 28, 20);
-		add(comboBox);
 		
-		JLabel lblCalidadhabitacion = new JLabel("Calidad_habitacion");
-		lblCalidadhabitacion.setBounds(50, 110, 101, 14);
+		comboBoxCalidad.setBounds(150, 107, 230, 20);
+		add(comboBoxCalidad);
+		
+		JLabel lblCalidadhabitacion = new JLabel("Calidad habitacion");
+		lblCalidadhabitacion.setBounds(23, 110, 117, 14);
 		add(lblCalidadhabitacion);
 		
-		textField = new JTextField();
-		textField.setBounds(150, 154, 230, 90);
-		add(textField);
-		textField.setColumns(10);
+		textDetalle = new JTextField();
+		textDetalle.setBounds(150, 154, 230, 90);
+		add(textDetalle);
+		textDetalle.setColumns(10);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion");
-		lblDescripcion.setBounds(50, 154, 101, 14);
+		lblDescripcion.setBounds(39, 155, 101, 14);
 		add(lblDescripcion);
 		
-		JButton btnAceptar = new JButton("Modificar");
-		btnAceptar.setBounds(150, 266, 89, 23);
+		btnAceptar = new JButton("Modificar");
+		btnAceptar.setBounds(225, 255, 89, 23);
 		add(btnAceptar);
 		
-		JLabel lblHabitacion = new JLabel("Habitacion");
-		lblHabitacion.setBounds(50, 70, 70, 14);
+		JLabel lblHabitacion = new JLabel("Nro de Habitacion");
+		lblHabitacion.setBounds(39, 70, 101, 14);
 		add(lblHabitacion);
 		
-		JComboBox comboBox_1 = new JComboBox();
-		comboBox_1.setBounds(150, 70, 28, 20);
-		add(comboBox_1);
+		textNroHabitacion = new JTextField();
+		textNroHabitacion.setBounds(150, 67, 86, 20);
+		add(textNroHabitacion);
+		textNroHabitacion.setColumns(10);
 		
 		JLabel lblAgregarHabitacion = new JLabel("Agregar habitacion");
 		
 	}
-
+	private JTextField textDetalle;
+	public JTextField getTextDetalle() {
+		return textDetalle;
+	}
+	public void setTextDetalle(JTextField textDetalle) {
+		this.textDetalle = textDetalle;
+	}
+	
+	public JTextField getTextNroHabitacion() {
+		return textNroHabitacion;
+	}
+	public void setTextNroHabitacion(JTextField textNroHabitacion) {
+		this.textNroHabitacion = textNroHabitacion;
+	}
+	public JButton getBtnAceptar() {
+		return btnAceptar;
+	}
+	public void setBtnAceptar(JButton btnAceptar) {
+		this.btnAceptar = btnAceptar;
+	}
+	public JComboBox getComboBoxCalidad() {
+		return comboBoxCalidad;
+	}
+	public void setComboBoxCalidad(ArrayList<Calidad_habitacion> listaCalidad) {
+		for (Calidad_habitacion calidad_habitacion : listaCalidad) {
+			comboBoxCalidad.addItem(calidad_habitacion);
+		}
+	}
 }

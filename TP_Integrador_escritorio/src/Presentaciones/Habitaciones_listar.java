@@ -86,8 +86,6 @@ public class Habitaciones_listar extends JPanel {
 				tablaHabitacion.getColumnModel().getColumn(0).setResizable(false);
 				tablaHabitacion.getColumnModel().getColumn(1).setPreferredWidth(100);
 				tablaHabitacion.getColumnModel().getColumn(1).setResizable(false);
-			
-
 				
 				spHabitacion.setViewportView(tablaHabitacion);
 				refrescarTabla();
@@ -108,7 +106,7 @@ public class Habitaciones_listar extends JPanel {
 				for (Habitacion h : habitacionEnTabla)
 				{
 					String detalles = h.getDetalles();
-					int id = h.getId_habitacion();
+					String id = h.getId_habitacion();
 					String idCalidad = h.getId_calidad_habitacion();
 					Object[] fila = { id, detalles};
 					this.getModelHabitacion().addRow(fila);
