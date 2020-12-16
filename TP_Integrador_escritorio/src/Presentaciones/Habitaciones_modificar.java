@@ -26,37 +26,40 @@ public class Habitaciones_modificar extends JPanel {
 		setLayout(null);
 		
 		JLabel lblModificarHabitacion = new JLabel("Modificar habitacion");
-		lblModificarHabitacion.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lblModificarHabitacion.setBounds(150, 25, 146, 19);
+		lblModificarHabitacion.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		lblModificarHabitacion.setBounds(221, 37, 206, 19);
 		add(lblModificarHabitacion);
 		
 		
-		comboBoxCalidad.setBounds(150, 107, 230, 20);
+		comboBoxCalidad.setBounds(197, 110, 230, 20);
 		add(comboBoxCalidad);
 		
 		JLabel lblCalidadhabitacion = new JLabel("Calidad habitacion");
-		lblCalidadhabitacion.setBounds(23, 110, 117, 14);
+		lblCalidadhabitacion.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblCalidadhabitacion.setBounds(60, 110, 117, 14);
 		add(lblCalidadhabitacion);
 		
 		textDetalle = new JTextField();
-		textDetalle.setBounds(150, 154, 230, 90);
+		textDetalle.setBounds(197, 148, 230, 90);
 		add(textDetalle);
 		textDetalle.setColumns(10);
 		
 		JLabel lblDescripcion = new JLabel("Descripcion");
-		lblDescripcion.setBounds(39, 155, 101, 14);
+		lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblDescripcion.setBounds(60, 155, 101, 14);
 		add(lblDescripcion);
 		
 		btnAceptar = new JButton("Modificar");
-		btnAceptar.setBounds(225, 255, 89, 23);
+		btnAceptar.setBounds(261, 249, 89, 23);
 		add(btnAceptar);
 		
 		JLabel lblHabitacion = new JLabel("Nro de Habitacion");
-		lblHabitacion.setBounds(39, 70, 101, 14);
+		lblHabitacion.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblHabitacion.setBounds(60, 79, 123, 14);
 		add(lblHabitacion);
 		
 		textNroHabitacion = new JTextField();
-		textNroHabitacion.setBounds(150, 67, 86, 20);
+		textNroHabitacion.setBounds(197, 77, 86, 20);
 		add(textNroHabitacion);
 		textNroHabitacion.setColumns(10);
 		

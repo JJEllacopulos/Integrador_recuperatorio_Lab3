@@ -27,30 +27,32 @@ public class Habitaciones_agregar extends JPanel {
 		setLayout(null);
 		
 		
-		cbCalidad.setBounds(139, 69, 230, 20);
+		cbCalidad.setBounds(164, 69, 230, 20);
 		add(cbCalidad);
 		
 		JLabel lblCalidadhabitacion = new JLabel("Calidad de habitaci\u00F3n");
-		lblCalidadhabitacion.setBounds(10, 72, 129, 14);
+		lblCalidadhabitacion.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblCalidadhabitacion.setBounds(25, 71, 129, 14);
 		add(lblCalidadhabitacion);
 		
 		textoDescripcion = new JTextField();
-		textoDescripcion.setBounds(139, 114, 230, 90);
+		textoDescripcion.setBounds(161, 137, 248, 108);
 		add(textoDescripcion);
 		textoDescripcion.setColumns(10);
 		
 		lblDescripcion = new JLabel("Descripci\u00F3n");
-		lblDescripcion.setBounds(57, 115, 101, 14);
+		lblDescripcion.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblDescripcion.setBounds(53, 153, 101, 14);
 		add(lblDescripcion);
 		
 		btnAceptar = new JButton("Agregar");
-		btnAceptar.setBounds(175, 215, 89, 23);
+		btnAceptar.setBounds(234, 273, 89, 23);
 		add(btnAceptar);
 		
 		JLabel lblAgregarHabitacion = new JLabel("Agregar habitaci\u00F3n");
-		lblAgregarHabitacion.setFont(new Font("Times New Roman", Font.BOLD, 16));
+		lblAgregarHabitacion.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		lblAgregarHabitacion.setBackground(Color.BLACK);
-		lblAgregarHabitacion.setBounds(155, 27, 138, 20);
+		lblAgregarHabitacion.setBounds(192, 21, 185, 20);
 		add(lblAgregarHabitacion);
 
 	}

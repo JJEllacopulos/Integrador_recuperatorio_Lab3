@@ -75,7 +75,7 @@ public class Habitaciones_listar extends JPanel {
 				setLayout(null);
 				
 				JScrollPane spHabitacion = new JScrollPane();
-				spHabitacion.setBounds(15, 30, 413, 163);
+				spHabitacion.setBounds(37, 76, 413, 163);
 				this.add(spHabitacion);
 			    
 			    
@@ -88,11 +88,16 @@ public class Habitaciones_listar extends JPanel {
 				tablaHabitacion.getColumnModel().getColumn(1).setResizable(false);
 				
 				spHabitacion.setViewportView(tablaHabitacion);
+				
+				JLabel lblListaDeHabitaciones = new JLabel("Lista de habitaciones");
+				lblListaDeHabitaciones.setFont(new Font("Times New Roman", Font.BOLD, 18));
+				lblListaDeHabitaciones.setBounds(163, 23, 172, 14);
+				add(lblListaDeHabitaciones);
 				refrescarTabla();
 					
 			}
 			
-			private void refrescarTabla()
+			public void refrescarTabla()
 			{
 				this.habitacionEnTabla = (ArrayList<Habitacion>) hNeg.readAll();
 				llenarTabla(this.habitacionEnTabla);

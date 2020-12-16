@@ -21,45 +21,49 @@ public class Disponibilidad_agregar extends JPanel {
 		setLayout(null);
 		
 		JLabel lblAgregarDisponivilidad = new JLabel("Agregar disponibilidad");
-		lblAgregarDisponivilidad.setFont(new Font("Times New Roman", Font.BOLD, 16));
-		lblAgregarDisponivilidad.setBounds(150, 25, 156, 19);
+		lblAgregarDisponivilidad.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		lblAgregarDisponivilidad.setBounds(194, 22, 178, 19);
 		add(lblAgregarDisponivilidad);
 		
 		JLabel lblHabitacion = new JLabel("Nro Habitacion");
-		lblHabitacion.setBounds(23, 70, 108, 14);
+		lblHabitacion.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblHabitacion.setBounds(51, 74, 108, 14);
 		add(lblHabitacion);
 		
 		JLabel lblFechaDeInicio = new JLabel("Fecha de inicio");
-		lblFechaDeInicio.setBounds(35, 113, 96, 14);
+		lblFechaDeInicio.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblFechaDeInicio.setBounds(51, 113, 96, 14);
 		add(lblFechaDeInicio);
 		
 		JLabel lblFechaDeFinal = new JLabel("Fecha de final");
-		lblFechaDeFinal.setBounds(35, 152, 96, 14);
+		lblFechaDeFinal.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblFechaDeFinal.setBounds(51, 152, 96, 14);
 		add(lblFechaDeFinal);
 		
 		JLabel lblDetalles = new JLabel("Detalles");
-		lblDetalles.setBounds(35, 190, 61, 14);
+		lblDetalles.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblDetalles.setBounds(71, 190, 61, 14);
 		add(lblDetalles);
 		
 		detallesHabitacion = new JTextField();
-		detallesHabitacion.setBounds(149, 187, 213, 59);
+		detallesHabitacion.setBounds(169, 190, 213, 59);
 		add(detallesHabitacion);
 		detallesHabitacion.setColumns(10);
 		
 		btnAgregar = new JButton("Agregar");
-		btnAgregar.setBounds(217, 257, 89, 23);
+		btnAgregar.setBounds(246, 277, 89, 23);
 		add(btnAgregar);
 		
 		
-		fechaInicio.setBounds(152, 113, 154, 20);
+		fechaInicio.setBounds(169, 113, 154, 20);
 		add(fechaInicio);
 		
 		
-		fechaFinal.setBounds(152, 152, 154, 20);
+		fechaFinal.setBounds(169, 152, 154, 20);
 		add(fechaFinal);
 		
 		nroHabitacion = new JTextField();
-		nroHabitacion.setBounds(153, 67, 86, 20);
+		nroHabitacion.setBounds(169, 72, 86, 20);
 		add(nroHabitacion);
 		nroHabitacion.setColumns(10);
 		

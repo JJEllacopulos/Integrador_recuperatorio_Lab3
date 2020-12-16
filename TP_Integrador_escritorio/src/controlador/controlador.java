@@ -82,7 +82,7 @@ public class controlador implements ActionListener{
 	}
 	
 	public void  EventoClickMenu_habitaciones_listar(ActionEvent a)
-	{		
+	{		this.habitaciones_listar.refrescarTabla();
 		ventana_principal.getContentPane().removeAll();
 		ventana_principal.getContentPane().add(habitaciones_listar);
 		ventana_principal.getContentPane().repaint();
