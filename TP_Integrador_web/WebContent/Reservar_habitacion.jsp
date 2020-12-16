@@ -1,7 +1,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="javax.servlet.http.HttpSession"%>
 <%@page import="javax.servlet.RequestDispatcher"%>
-<%@page import="Entidades.Disponibilidad_de_habitacion"%>
+<%@page import="Entidades.Calidad_habitacion"%>
 <%@page import="Entidades.Habitacion"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -42,37 +42,74 @@
 
 
 <body>
-	
-<div class="form-row mt-5">
-    <div class="col-6">
-    <input type="text" class="form-control formu" placeholder="Seleccionar Fecha de Check-in" onfocus="(this.type='date')" onblur="(this.type='text')" name="txtFechaCheckIn" required>
+	<form action="ServletsReserva" method="post">
+<div class="form-row mt-4">
+    <div class="col-8">
+    <%if (request.getAttribute("Fecha1")!=null ) { %>
+    
+ <h6>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Check-in:</h6>
+ <input type="text" class="form-control formu" value="<%=request.getAttribute("Fecha1")%>" placeholder="<%=request.getAttribute("Fecha1")%>" onfocus="(this.type='date')" onblur="(this.type='text')" name="txtFechaCheckIn" required>
+    
+     <input type="hidden" class="form-control" value="<%=request.getAttribute("Fecha1")%>" name="Fecha1" >
+    <%} 
+    else {%>
+   <h6>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Check-in:</h6> 
+   <input type="text" class="form-control formu" placeholder="Seleccionar Fecha de Check-in" onfocus="(this.type='date')" onblur="(this.type='text')" name="txtFechaCheckIn" required>
+    <%} %>
   </div>
-    <div class="col-6">
-     <input type="text" class="form-control formu" placeholder="Seleccionar Fecha de Check-out" onfocus="(this.type='date')" onblur="(this.type='text')" name="txtFechaCheckOut" required>
+    
+  <div class="col-3">
+  <h6>Tipo Habitacion:</h6>
+   <select name="ddl_Calidad_Habitacion" class="form-control">
+
+	 <%
+	 ArrayList<Calidad_habitacion> lista = new ArrayList<Calidad_habitacion>();
+		lista = (ArrayList<Calidad_habitacion>)request.getAttribute("CalidadHabitacion");
+		
+		 if(lista!=null)
+			 for(Calidad_habitacion e : lista)
+			{	
+	%>	
+	<option value="<%=e.getNombre() %>"><%=e.getNombre()%></option>
+		<% } %>
+		
+		
+		</select>
+		 </div>
+		 <div class="col-8">
+		 <%if (request.getAttribute("Fecha2")!=null ) { %>	
+		 <h6>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Check-Out:</h6>
+		 <input type="text" class="form-control formu" value="<%=request.getAttribute("Fecha2")%>" placeholder="<%=request.getAttribute("Fecha2")%>" onfocus="(this.type='date')" onblur="(this.type='text')" name="txtFechaCheckOut" required >
+    	
+		 <input type="hidden" class="form-control" value="<%=request.getAttribute("Fecha2")%>" name="Fecha2" >
+    <%} 
+		 else{%>
+    <h6>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Check-Out:</h6> 
+    <input type="text" class="form-control formu" placeholder="Seleccionar Fecha de Check-out" onfocus="(this.type='date')" onblur="(this.type='text')" name="txtFechaCheckOut" required >
+     <%} %>
   </div>
       </div>	
-      
- <form action="ServletsReserva" method="post"> 
-  <input type="submit"  class="btn btn-success mt-5 centrar" value="Buscar Disponibilidad" name="btnDisponibilidad">
+      <input type="submit"  class="btn btn-danger mt-5 centrar" value="Cargar" name="btnCarga">
+   <input type="submit"  class="btn btn-success mt-5 centrar" value="Buscar Disponibilidad" name="btnDisponibilidad">
  <%
 	
-	ArrayList<Habitacion> lista = new ArrayList<Habitacion>();
+	ArrayList<Calidad_habitacion> lista1 = new ArrayList<Calidad_habitacion>();
 	
 
-	lista = (ArrayList<Habitacion>)request.getAttribute("Disponibilidad");
+	lista1 = (ArrayList<Calidad_habitacion>)request.getAttribute("Disponibilidad");
 	
 	%>
  <div class="container">
 <table class="table ">
   <thead class="thead-light">
     <tr>
-    <th scope="col">Movimiento</th>
-      <th scope="col">Fecha</th>
-      <th scope="col">Monto</th>
- <%  int i=1;
+    <th scope="col">Habitacion</th>
+      <th scope="col">Tipo</th>
+      <th scope="col">Detalles</th>
+ <%  
  
- if(lista!=null){
-		 for(Habitacion e : lista)
+ if(lista1!=null){
+		 for(Calidad_habitacion e : lista1)
 	{
  
 %>     
@@ -80,12 +117,10 @@
   </thead>
   <tbody>
     <tr>
-      <td>HOLA1</td>
-      <td>HOLA2</td>
-
-
-         <td class="text-danger"><b>$<%= e.getId_habitacion() %></b></td>
-    
+      <td class="text"><b><%= e.getId_calidad_habitacion() %></b></td>
+      <td class="text"><b><%= e.getNombre() %></b></td>
+       <td class="text"><b><%= e.getDetalles() %></b></td>
+    <td> <button type="submit" class="btn btn-primary btnDD" name="btn_SeleccionHabitacion" >Reservar</button> </td>
       <td></td> 
     </tr>
 
