@@ -34,7 +34,7 @@ public class Disponibilidad_de_habitacion_daoimp implements Disponibilidad_de_ha
 			 cn = DriverManager.getConnection(host+dbName, user,pass);
 			
 			 
-			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_Disponivilidad_de_habitacion(?,?,?,?)");
+			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_Reserva_Disponivilidad_de_habitacion(?,?,?,?)");
 			 cst.setInt(1, disponibilidad_de_habitacion.getId_habitacion());
 			 cst.setString(2, disponibilidad_de_habitacion.getFecha_inicio());
 			 cst.setString(3, disponibilidad_de_habitacion.getFecha_final());

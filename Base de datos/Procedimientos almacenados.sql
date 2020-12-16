@@ -231,7 +231,7 @@ CREATE PROCEDURE PRO_DisponibilidadPorFechas(
 
 
 DELIMITER $$   
-   CREATE PROCEDURE PRO_Listar_Disponivilidad_de_habitacion(
+   CREATE PROCEDURE PRO_Max_Disponivilidad_de_habitacion(
         
 		)
     
@@ -241,3 +241,20 @@ DELIMITER $$
 
 END$$ 
     
+DELIMITER $$
+	CREATE PROCEDURE PRO_ingresar_Reserva_Disponivilidad_de_habitacion(
+
+		ing_id_habitacion INT,
+		ing_fecha_inicio DATE,
+		ing_fecha_final DATE,
+		ing_detalles VARCHAR(200)
+		
+        )
+		
+	BEGIN
+
+		INSERT INTO Disponivilidad_de_habitacion (id_habitacion, fecha_inicio, fecha_final, detalles, reservacion)
+		SELECT ing_id_habitacion, ing_fecha_inicio, ing_fecha_final, ing_detalles, 1 ;
+		
+	END$$
+
