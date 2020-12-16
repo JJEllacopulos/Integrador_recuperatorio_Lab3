@@ -1,10 +1,12 @@
 package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 import Entidades.Calidad_habitacion;
+import Entidades.Disponibilidad_de_habitacion;
 import Entidades.Habitacion;
 import Presentaciones.Disponibilidad_agregar;
 import Presentaciones.Habitaciones_agregar;
@@ -14,8 +16,10 @@ import Presentaciones.Habitaciones_modificar;
 import Presentaciones.Ventana_principal;
 import Main.Principal;
 import negocio.Calidad_habitacion_Negocio;
+import negocio.Disponibilidad_habitacion_negocio;
 import negocio.HabitacionNegocio;
 import negocioImp.Calidad_habitacion_NegocioImpl;
+import negocioImp.Disponibilidad_habitacion_negocioImpl;
 import negocioImp.HabitacionNegocioImpl;
 
 
@@ -29,6 +33,8 @@ public class controlador implements ActionListener{
 	private Disponibilidad_agregar disponibilidad_agregar;
 	Calidad_habitacion calidad = new Calidad_habitacion();
 	Habitacion habitacion = new Habitacion();
+	Disponibilidad_de_habitacion disponibilidad = new Disponibilidad_de_habitacion();
+	Disponibilidad_habitacion_negocio negDisponibilidad = new Disponibilidad_habitacion_negocioImpl();
 	private HabitacionNegocio negHabitacion = new HabitacionNegocioImpl();
 	private Calidad_habitacion_Negocio negCalidad = new Calidad_habitacion_NegocioImpl();
 	ArrayList<Calidad_habitacion> listaCalidad = new ArrayList<Calidad_habitacion>();
@@ -52,6 +58,7 @@ public class controlador implements ActionListener{
 		this.habitaciones_agregar.getBtnAceptar().addActionListener(a->EventoClick_Agregar_Aceptar(a));
 		this.habitaciones_modificar.getBtnAceptar().addActionListener(a->EventoClick_Modificar_Aceptar(a));
 		this.habitaciones_borrar.getBtnBorrar().addActionListener(a->EventoClick_Borrar_Aceptar(a));
+		this.disponibilidad_agregar.getBtnAgregar().addActionListener(a->EventoClick_Aceptar_AgregarDisponibilidad(a));
 	}
 	
 	
@@ -152,7 +159,38 @@ public class controlador implements ActionListener{
 		}
 		JOptionPane.showMessageDialog(null, mensaje);
 	}
+	public void EventoClick_Aceptar_AgregarDisponibilidad(ActionEvent a) {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 	
+
+		if(!((disponibilidad_agregar.getFechaInicio().getDate() == null) ||
+				(disponibilidad_agregar.getFechaFinal().getDate() == null) ||
+				disponibilidad_agregar.getDetallesHabitacion().getText().equals("") || 
+				disponibilidad_agregar.getNroHabitacion().getText().equals(""))) {
+			
+			String fechaInicio = sdf.format(disponibilidad_agregar.getFechaInicio().getDate());
+			String fechaFinal = sdf.format(disponibilidad_agregar.getFechaFinal().getDate());
+			String detalle = disponibilidad_agregar.getDetallesHabitacion().getText();
+			String nroHabitacion = disponibilidad_agregar.getNroHabitacion().getText();
+			
+			disponibilidad.setFecha_inicio(fechaInicio);
+			disponibilidad.setFecha_final(fechaFinal);
+			disponibilidad.setDetalles(detalle);
+			disponibilidad.setId_habitacion(nroHabitacion);			
+			
+			if(negDisponibilidad.insert(disponibilidad)>0) {
+				mensaje = "Se agregó la disponibilidad correctamente";
+			}else {
+				mensaje = "Por favor, ingrese un número de habitación existente.";
+			}
+			
+		}else {
+			mensaje = "Por favor, complete todos los campos.";
+		}
+			
+		JOptionPane.showMessageDialog(null, mensaje);	
+		
+	}
 	public void inicializar()
 	{
 		this.ventana_principal.setVisible(true);;

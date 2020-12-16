@@ -161,8 +161,8 @@ DELIMITER $$
 		
 	BEGIN
 
-		INSERT INTO Disponivilidad_de_habitacion (id_habitacion, nombre_usuario, fecha_inicio, fecha_final, detalles)
-		SELECT ing_id_habitacion, ing_nombre_usuario, ing_fecha_inicio, ing_fecha_final, ing_detalles;
+		INSERT INTO Disponivilidad_de_habitacion (id_habitacion, fecha_inicio, fecha_final, detalles)
+		SELECT ing_id_habitacion, ing_fecha_inicio, ing_fecha_final, ing_detalles;
 		
 	END$$
 
@@ -207,3 +207,22 @@ DELIMITER $$
 
 END$$
 
+DELIMITER $$
+CREATE PROCEDURE PRO_DisponibilidadPorFechas(
+        ing_Fecha1 date,
+        ing_Fecha2 date,
+        ing_Calidad varchar(30)
+        )
+
+    BEGIN
+
+        SELECT Habitacion.id_habitacion, Calidad_habitacion.nombre, Calidad_habitacion.detalles
+        FROM  Habitacion
+        INNER JOIN Calidad_habitacion ON Habitacion.id_calidad_habitacion = Calidad_habitacion.id_calidad_habitacion
+        WHERE Habitacion.id_habitacion NOT IN (
+        SELECT Disponivilidad_de_habitacion.id_habitacion
+        FROM  Disponivilidad_de_habitacion
+        WHERE (ing_Fecha1 BETWEEN Disponivilidad_de_habitacion.fecha_inicio AND Disponivilidad_de_habitacion.fecha_final) 
+        OR (ing_Fecha2 BETWEEN Disponivilidad_de_habitacion.fecha_inicio AND Disponivilidad_de_habitacion.fecha_final) 
+        ) AND Calidad_habitacion.nombre = ing_Calidad;
+    END$$

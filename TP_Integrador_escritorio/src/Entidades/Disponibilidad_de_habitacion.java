@@ -5,10 +5,10 @@ import java.util.Date;
 public class Disponibilidad_de_habitacion {
 	
 	private int id_reserva_de_habitacion;
-	private int id_habitacion;
+	private String id_habitacion;
 	private String nombre_usuario;
-	private Date fecha_inicio;
-	private Date fecha_final;
+	private String fecha_inicio;
+	private String fecha_final;
 	private String detalles;
 	private Boolean estado;
 	private Boolean reservacion;
@@ -17,8 +17,8 @@ public class Disponibilidad_de_habitacion {
 		
 	}
 
-	public Disponibilidad_de_habitacion(int id_reserva_de_habitacion, int id_habitacion, String nombre_usuario,
-			Date fecha_inicio, Date fecha_final, String detalles, Boolean estado, Boolean reservacion) {
+	public Disponibilidad_de_habitacion(int id_reserva_de_habitacion, String id_habitacion, String nombre_usuario,
+			String fecha_inicio, String fecha_final, String detalles, Boolean estado, Boolean reservacion) {
 		super();
 		this.id_reserva_de_habitacion = id_reserva_de_habitacion;
 		this.id_habitacion = id_habitacion;
@@ -38,12 +38,12 @@ public class Disponibilidad_de_habitacion {
 		this.id_reserva_de_habitacion = id_reserva_de_habitacion;
 	}
 
-	public int getId_habitacion() {
+	public String getId_habitacion() {
 		return id_habitacion;
 	}
 
-	public void setId_habitacion(int id_habitacion) {
-		this.id_habitacion = id_habitacion;
+	public void setId_habitacion(String nroHabitacion) {
+		this.id_habitacion = nroHabitacion;
 	}
 
 	public String getNombre_usuario() {
@@ -54,19 +54,19 @@ public class Disponibilidad_de_habitacion {
 		this.nombre_usuario = nombre_usuario;
 	}
 
-	public Date getFecha_inicio() {
+	public String getFecha_inicio() {
 		return fecha_inicio;
 	}
 
-	public void setFecha_inicio(Date fecha_inicio) {
+	public void setFecha_inicio(String fecha_inicio) {
 		this.fecha_inicio = fecha_inicio;
 	}
 
-	public Date getFecha_final() {
+	public String getFecha_final() {
 		return fecha_final;
 	}
 
-	public void setFecha_final(Date fecha_final) {
+	public void setFecha_final(String fecha_final) {
 		this.fecha_final = fecha_final;
 	}
 

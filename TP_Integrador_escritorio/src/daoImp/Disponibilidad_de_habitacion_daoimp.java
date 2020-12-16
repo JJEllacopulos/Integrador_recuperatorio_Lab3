@@ -35,9 +35,9 @@ public class Disponibilidad_de_habitacion_daoimp implements Disponibilidad_de_ha
 			
 			 
 			 CallableStatement cst = cn.prepareCall("CALL PRO_ingresar_Disponivilidad_de_habitacion(?,?,?,?)");
-			 cst.setInt(1, disponibilidad_de_habitacion.getId_habitacion());
-			 cst.setDate(2, (Date) disponibilidad_de_habitacion.getFecha_inicio());
-			 cst.setDate(3, (Date) disponibilidad_de_habitacion.getFecha_final());
+			 cst.setString(1, disponibilidad_de_habitacion.getId_habitacion());
+			 cst.setString(2,  disponibilidad_de_habitacion.getFecha_inicio());
+			 cst.setString(3,  disponibilidad_de_habitacion.getFecha_final());
 			 cst.setString(4, disponibilidad_de_habitacion.getDetalles());
 	 
 			 filas=cst.executeUpdate();
@@ -75,9 +75,9 @@ public class Disponibilidad_de_habitacion_daoimp implements Disponibilidad_de_ha
 					
 					Disponibilidad_de_habitacion aux = new Disponibilidad_de_habitacion();
 					aux.setId_reserva_de_habitacion(resultado.getInt("id_disponivilidad_de_habitacion"));
-					aux.setId_habitacion(resultado.getInt("id_habitacion"));
-					aux.setFecha_inicio(resultado.getDate("fecha_inicio"));
-					aux.setFecha_final(resultado.getDate("fecha_final"));
+					aux.setId_habitacion(resultado.getString("id_habitacion"));
+					aux.setFecha_inicio(resultado.getString("fecha_inicio"));
+					aux.setFecha_final(resultado.getString("fecha_final"));
 					aux.setDetalles(resultado.getString("detalles"));
 					aux.setReservacion(resultado.getBoolean("reservacion"));
 					aux.setEstado(resultado.getBoolean("estado"));
