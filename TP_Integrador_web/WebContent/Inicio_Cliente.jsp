@@ -34,8 +34,8 @@ margin-left: 70%;
         <p>
             <a href="ServletsReserva?link_1=1" class="btn btn-success btn-lg">Reservar habitación&raquo;</a>
             <a href="ServletsReserva?btnVerReservas=1"  class="btn btn-info btn-lg">Ver reservas &raquo;</a>
-            <a href="ServletsUsuario?btnVerDatos=1"  class="btn btn-primary btn-lg">Mis datos &raquo;</a>
-            <a href="ServletsLogin?btnCerrarSesion=1"  class="btn btn-danger btn-lg">Cerrar sesión &raquo;</a>
+            <a href="Datos_cliente.jsp"  class="btn btn-primary btn-lg">Mis datos &raquo;</a>
+            <a href="ServletsLogin?CerrarSesion=1"  class="btn btn-danger btn-lg">Cerrar sesión &raquo;</a>
         </p>
         
         </div>

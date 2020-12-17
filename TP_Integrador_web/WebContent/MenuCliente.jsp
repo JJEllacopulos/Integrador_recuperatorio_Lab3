@@ -43,7 +43,7 @@ if((Usuario)session.getAttribute("userSession") == null){
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav margen">
          <li class="nav-item">
-          <a class="nav-link active text-light" aria-current="page" href="#">Inicio</a>
+          <a class="nav-link active text-light" aria-current="page" href="Inicio_Cliente.jsp">Inicio</a>
         </li>
          <li class="nav-item">
           <a class="nav-link text-light" href="ServletsReserva?link_1=1">Reservar habitación</a>
@@ -52,10 +52,10 @@ if((Usuario)session.getAttribute("userSession") == null){
           <a class="nav-link text-light" href="#">Mis Reservas</a>
         </li>
            <li class="nav-item">
-          <a class="nav-link text-light" href="#">Mis datos</a>
+          <a class="nav-link text-light" href="Datos_cliente.jsp">Mis datos</a>
         </li>
              <li class="nav-item">
-          <a class="nav-link text-light" href="#">Cerrar sesión</a>
+          <a class="nav-link text-light" href="ServletsLogin?CerrarSesion=1">Cerrar sesión</a>
         </li>
       </ul>
     </div>
