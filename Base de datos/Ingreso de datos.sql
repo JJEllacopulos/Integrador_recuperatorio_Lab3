@@ -81,78 +81,78 @@ CALL PRO_ingresar_Calidad_habitacion
 CALL PRO_ingresar_Habitacion 
 (
 	'Tipo1',
-    ''
+    'vista al mar'
 );
 
 CALL PRO_ingresar_Habitacion 
 (
 	'Tipo1',
-    ''
+    'vista al mar'
 );
 
 CALL PRO_ingresar_Habitacion 
 (
 	'Tipo1',
-    ''
+    'vista a Av'
 );
 
 CALL PRO_ingresar_Habitacion 
 (
 	'Tipo2',
-    ''
+    'Excelente wifi'
 );
 
 CALL PRO_ingresar_Habitacion 
 (
 	'Tipo2',
-    ''
+    'Recien amueblado'
 );
 
 CALL PRO_ingresar_Habitacion 
 (
 	'Tipo2',
-    ''
+    'Vista al mar'
 );
 
 CALL PRO_ingresar_Habitacion 
 (
 	'Tipo3',
-    ''
+    'Vista interna'
 );
 
 CALL PRO_ingresar_Habitacion 
 (
 	'Tipo3',
-    ''
+    'Vista interna'
 );
 
 CALL PRO_ingresar_Habitacion 
 (
 	'Tipo3',
-    ''
+    'Vista al mar'
 );
 
 CALL PRO_ingresar_Habitacion 
 (
 	'Tipo4',
-    ''
+    'Excelente wifi'
 );
 
 CALL PRO_ingresar_Habitacion 
 (
 	'Tipo4',
-    ''
+    'Vista interna'
 );
 
 CALL PRO_ingresar_Habitacion 
 (
 	'Tipo5',
-    ''
+    'vista a Av'
 );
 
 CALL PRO_ingresar_Habitacion 
 (
 	'Tipo5',
-    ''
+    'vista a Av'
 );
 

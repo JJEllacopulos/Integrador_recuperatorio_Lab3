@@ -121,6 +121,10 @@ public class controlador implements ActionListener{
 		
 		calidad = (Calidad_habitacion)this.habitaciones_agregar.getCbCalidad().getSelectedItem();
 		String descripcion = this.habitaciones_agregar.getTextoDescripcion().getText();
+		int confirmacion =  JOptionPane.showConfirmDialog(null, "Realmente desea agregar habitación?",
+		"Confirmar alta", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+		
+	if(confirmacion == 0) {
 		if(!descripcion.equals("")  || calidad.getId_calidad_habitacion().equals("") ) {
 		habitacion.setDetalles(descripcion);
 		habitacion.setId_calidad_habitacion(calidad.getId_calidad_habitacion());
@@ -132,13 +136,19 @@ public class controlador implements ActionListener{
 		}
 		JOptionPane.showMessageDialog(null, mensaje);
 	}
-	
+	}
 	public void EventoClick_Modificar_Aceptar(ActionEvent a) {
 		
 	calidad = (Calidad_habitacion)this.habitaciones_modificar.getComboBoxCalidad().getSelectedItem();
 	String descripcion = this.habitaciones_modificar.getTextDetalle().getText();
-	if(!descripcion.equals("")  || calidad.getId_calidad_habitacion().equals("") ) {
 	String id = this.habitaciones_modificar.getTextNroHabitacion().getText();
+	
+	int confirmacion =  JOptionPane.showConfirmDialog(null, "Realmente desea modificar la habitación?",
+			"Confirmar modificación", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+			
+		if(confirmacion == 0) {
+	if(!(descripcion.equals("")  || id.equals("") || controlador.isNumeric(id)==false)) {
+	
 	
 	habitacion.setId_habitacion(id);
 	habitacion.setDetalles(descripcion);
@@ -155,10 +165,15 @@ public class controlador implements ActionListener{
 	}
 	JOptionPane.showMessageDialog(null, mensaje);
 	}
-	
+	}
 	public void EventoClick_Borrar_Aceptar(ActionEvent a) {
 		String id = this.habitaciones_borrar.getTextNroHabitacion().getText();
-		if(id!= "") {
+		
+		int confirmacion =  JOptionPane.showConfirmDialog(null, "Realmente desea borrar esa habitación?",
+		"Confirmar baja", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+		
+	if(confirmacion == 0) {
+		if(!(id.equals("") || !(controlador.isNumeric(id)))) {
 			if(negHabitacion.delete(id)>0) {
 				mensaje = "Se eliminó correctamente";
 			}else {
@@ -169,15 +184,20 @@ public class controlador implements ActionListener{
 			mensaje = "Tiene que cargar el Id que desea eliminar.";
 		}
 		JOptionPane.showMessageDialog(null, mensaje);
+		}
 	}
 	public void EventoClick_Aceptar_AgregarDisponibilidad(ActionEvent a) {
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	
-
+		String id = disponibilidad_agregar.getNroHabitacion().getText();
+		int confirmacion =  JOptionPane.showConfirmDialog(null, "Realmente desea agregar disponibilidad?",
+		"Confirmar alta", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+		
+		
+	if(confirmacion == 0) {
 		if(!((disponibilidad_agregar.getFechaInicio().getDate() == null) ||
 				(disponibilidad_agregar.getFechaFinal().getDate() == null) ||
 				disponibilidad_agregar.getDetallesHabitacion().getText().equals("") || 
-				disponibilidad_agregar.getNroHabitacion().getText().equals(""))) {
+				id.equals("") || controlador.isNumeric(id)==false ) ) {
 			
 			String fechaInicio = sdf.format(disponibilidad_agregar.getFechaInicio().getDate());
 			String fechaFinal = sdf.format(disponibilidad_agregar.getFechaFinal().getDate());
@@ -189,19 +209,33 @@ public class controlador implements ActionListener{
 			disponibilidad.setDetalles(detalle);
 			disponibilidad.setId_habitacion(nroHabitacion);			
 			
-			if(negDisponibilidad.insert(disponibilidad)>0) {
+			if(negDisponibilidad.insert(disponibilidad)>0 && disponibilidad_agregar.getFechaInicio().getDate().before(disponibilidad_agregar.getFechaFinal().getDate())) {
 				mensaje = "Se agregó la disponibilidad correctamente";
 			}else {
-				mensaje = "Por favor, ingrese un número de habitación existente.";
+				mensaje = "Por favor, verifique el numero de habitación y las fechas.";
 			}
 			
 		}else {
 			mensaje = "Por favor, complete todos los campos.";
 		}
-			
-		JOptionPane.showMessageDialog(null, mensaje);	
 		
+		JOptionPane.showMessageDialog(null, mensaje);	
 	}
+	
+	}
+	   public static boolean isNumeric(String cadena) {
+
+	        boolean resultado;
+
+	        try {
+	            Integer.parseInt(cadena);
+	            resultado = true;
+	        } catch (NumberFormatException excepcion) {
+	            resultado = false;
+	        }
+
+	        return resultado;
+	    }
 	public void inicializar()
 	{
 		this.ventana_principal.setVisible(true);;

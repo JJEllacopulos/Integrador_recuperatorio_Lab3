@@ -42,6 +42,11 @@ public class ServletsLogin extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("/Registrarse.jsp");   
 	        rd.forward(request, response); 
 		}
+		if(request.getParameter("CerrarSesion")!=null) {
+			request.getSession().invalidate();
+			RequestDispatcher rd = request.getRequestDispatcher("/Login.jsp");
+			rd.forward(request, response);
+			}
 	}
 
 	/**
@@ -71,7 +76,7 @@ public class ServletsLogin extends HttpServlet {
 					
 				
 					session.setAttribute("userSession", usuario);
-					rd = request.getRequestDispatcher("/Inicio.jsp");
+					rd = request.getRequestDispatcher("/Inicio_Cliente.jsp");
 				
 				}
 			else {	
