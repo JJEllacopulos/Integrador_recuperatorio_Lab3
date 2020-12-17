@@ -217,7 +217,8 @@ CREATE PROCEDURE PRO_DisponibilidadPorFechas(
 		
 	BEGIN
 
-		SELECT Habitacion.id_habitacion, Calidad_habitacion.nombre, Calidad_habitacion.detalles
+
+		SELECT Habitacion.id_habitacion, Calidad_habitacion.nombre, Habitacion.detalles
         FROM  Habitacion
         INNER JOIN Calidad_habitacion ON Habitacion.id_calidad_habitacion = Calidad_habitacion.id_calidad_habitacion
         WHERE  
@@ -301,3 +302,20 @@ DELIMITER $$
 		SELECT ing_id_habitacion, ing_fecha_inicio, ing_fecha_final, ing_detalles, 1 ;
 		
 	END$$
+    
+DELIMITER $$
+CREATE PROCEDURE PRO_ListarMisReservas(		
+		ing_Usuario varchar(30)
+        )
+		
+	BEGIN
+
+		SELECT Habitacion.id_habitacion, Calidad_habitacion.nombre, Habitacion.detalles, Disponivilidad_de_habitacion.fecha_inicio, Disponivilidad_de_habitacion.fecha_final
+        FROM  Reservacion_de_habitacion
+        INNER JOIN Disponivilidad_de_habitacion ON Disponivilidad_de_habitacion.id_disponivilidad_de_habitacion = Reservacion_de_habitacion.id_disponivilidad_de_habitacion
+        INNER JOIN Habitacion ON Disponivilidad_de_habitacion.id_habitacion = Habitacion.id_habitacion
+        INNER JOIN Calidad_habitacion ON Habitacion.id_calidad_habitacion = Calidad_habitacion.id_calidad_habitacion
+        WHERE  Reservacion_de_habitacion.nombre_usuario = ing_Usuario;
+      
+	END$$
+    

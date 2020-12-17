@@ -78,6 +78,52 @@ public int reserva(Disponibilidad_de_habitacion disponibilidad_de_habitacion) {
 		  return filas;
 	}
 
+public ArrayList<Disponibilidad_de_habitacion> MisRes(String usu) {
+	
+	
+	try {
+		Class.forName("com.mysql.jdbc.Driver");
+	} catch (ClassNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+	
+	ArrayList<Disponibilidad_de_habitacion> x = new ArrayList<Disponibilidad_de_habitacion>();
+		
+		Connection cn = null;
+		
+		try {
+			
+			cn = DriverManager.getConnection(host+dbName, user,pass);
+			CallableStatement st = cn.prepareCall("CALL PRO_ListarMisReservas(?)");
+			st.setString(1, usu);
+			
+			ResultSet resultado = st.executeQuery();
+			while(resultado.next()){
+				
+				
+				Disponibilidad_de_habitacion aux = new Disponibilidad_de_habitacion();
+				aux.setId_habitacion(resultado.getInt("id_habitacion"));
+				aux.setNombre_usuario(resultado.getString("nombre"));
+				aux.setFecha_inicio(resultado.getString("fecha_inicio"));
+				aux.setFecha_final(resultado.getString("fecha_final"));
+				aux.setDetalles(resultado.getString("detalles"));
+				
+				x.add(aux);
+				
+			}
+			
+		}
+		catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+		return x;
+		
+	}
+
 
 	public ArrayList<Disponibilidad_de_habitacion> readAll() {
 		

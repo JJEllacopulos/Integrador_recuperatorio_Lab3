@@ -1,7 +1,10 @@
 package Servlets;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -28,11 +31,13 @@ import NegocioImpl.HabitacionNegocioImpl;
 @WebServlet("/ServletsReserva")
 public class ServletsReserva extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-      
+	Date Hoy = java.sql.Date.valueOf("2020-12-17");  
 	HabitacionNegocio HabNeg = new HabitacionNegocioImpl();
 	Calidad_habitacion_Negocio CalidadNeg = new Calidad_habitacion_NegocioImpl();
 	ArrayList<Calidad_habitacion> CalHab = new ArrayList<Calidad_habitacion>();
 	ArrayList<Calidad_habitacion> CalHab2 = new ArrayList<Calidad_habitacion>();
+	Disponibilidad_habitacion_Negocio dispoNeg = new Disponibilidad_habitacion_NegocioImpl();
+	ArrayList<Disponibilidad_de_habitacion> MisRes = new ArrayList<Disponibilidad_de_habitacion>();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -47,6 +52,8 @@ public class ServletsReserva extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Usuario usuario = new Usuario();
+		HttpSession session = request.getSession();
 		
 	    if(request.getParameter("link_1")!=null) {
 	    	
@@ -54,6 +61,17 @@ public class ServletsReserva extends HttpServlet {
 	    	request.setAttribute("CalidadHabitacion", CalHab);
 
 			RequestDispatcher rd = request.getRequestDispatcher("/Reservar_habitacion.jsp");   
+	        rd.forward(request, response); 
+		}
+	    
+	    	if(request.getParameter("link_2")!=null) {
+	    		
+	    		usuario= (Usuario)session.getAttribute("userSession");
+	    		
+	    		MisRes = dispoNeg.MisRes(usuario.getNombre_usuario());
+	    		request.setAttribute("MisReservas", MisRes);
+	    		
+			RequestDispatcher rd = request.getRequestDispatcher("/MisReservas.jsp");   
 	        rd.forward(request, response); 
 		}
 	}
@@ -73,18 +91,24 @@ public class ServletsReserva extends HttpServlet {
 	    	 
 	    	CalHab= CalidadNeg.readAll();
 	    	request.setAttribute("CalidadHabitacion", CalHab);
-
-	    	CalHab2 = CalidadNeg.ListarDispo(request.getParameter("txtFechaCheckIn"),request.getParameter("txtFechaCheckOut"),request.getParameter("ddl_Calidad_Habitacion"));
 	    	 	    	
 	    	String F1=request.getParameter("txtFechaCheckIn");
 	    	String F2=request.getParameter("txtFechaCheckOut");
 	    	
+	    	Date fecha1 = java.sql.Date.valueOf(F1);
+	    	Date fecha2 = java.sql.Date.valueOf(F2);
+	    	
+
+	    	if (fecha1.before(fecha2) && fecha1.after(Hoy) ) {
+	    		
+	        CalHab2 = CalidadNeg.ListarDispo(request.getParameter("txtFechaCheckIn"),request.getParameter("txtFechaCheckOut"),request.getParameter("ddl_Calidad_Habitacion"));	    	
+	    	request.setAttribute("Disponibilidad", CalHab2 );
+	    	
+	    	}
+	    		    	
 	    	request.setAttribute("Fecha1", F1 );
 	    	request.setAttribute("Fecha2", F2 );
 	    	
-	    	request.setAttribute("Disponibilidad", CalHab2 );
-	    	
-	    	    	
 			RequestDispatcher rd = request.getRequestDispatcher("/Reservar_habitacion.jsp");   
 	        rd.forward(request, response); 
 		}
@@ -105,7 +129,7 @@ public class ServletsReserva extends HttpServlet {
 	    	
 	    	NegDispo.insert(dispo);
 	    		    	
-	    	RequestDispatcher rd = request.getRequestDispatcher("/Reservar_habitacion.jsp");   
+	    	RequestDispatcher rd = request.getRequestDispatcher("/MisReservas.jsp");   
 	        rd.forward(request, response); 
 	    	
 		}

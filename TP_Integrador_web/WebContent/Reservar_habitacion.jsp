@@ -70,13 +70,16 @@
 	 <%
 	 ArrayList<Calidad_habitacion> lista = new ArrayList<Calidad_habitacion>();
 		lista = (ArrayList<Calidad_habitacion>)request.getAttribute("CalidadHabitacion");
-		
+		boolean primero = true;
 		 if(lista!=null)
 			 for(Calidad_habitacion e : lista)
-			{	
+			{
+		if (primero){
+			%> <option value="Todas">Todas</option> <% 
+		}else {
 	%>	
 	<option value="<%=e.getNombre() %>"><%=e.getNombre()%></option>
-		<% } %>
+		<% }primero=false; }%>
 		
 		
 		</select>

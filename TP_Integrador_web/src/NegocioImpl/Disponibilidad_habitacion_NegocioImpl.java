@@ -1,6 +1,9 @@
 package NegocioImpl;
 
 import Entidades.Disponibilidad_de_habitacion;
+
+import java.util.ArrayList;
+
 import Dao.Disponibilidad_de_habitacion_dao;
 import DaoImpl.Disponibilidad_de_habitacion_daoimp;
 import Negocio.Disponibilidad_habitacion_Negocio;
@@ -16,5 +19,9 @@ public class Disponibilidad_habitacion_NegocioImpl implements Disponibilidad_hab
         daoDisponibilidad.reserva(disponibilidad_de_habitacion);
         return filas;
     }
+	@Override
+	public ArrayList<Disponibilidad_de_habitacion> MisRes(String usu) {		
+		return daoDisponibilidad.MisRes(usu);
+	}
 
 }

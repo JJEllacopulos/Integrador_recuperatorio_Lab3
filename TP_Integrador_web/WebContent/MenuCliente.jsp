@@ -49,7 +49,7 @@ if((Usuario)session.getAttribute("userSession") == null){
           <a class="nav-link text-light" href="ServletsReserva?link_1=1">Reservar habitación</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="#">Mis Reservas</a>
+          <a class="nav-link text-light" href="ServletsReserva?link_2=1">Mis Reservas</a>
         </li>
            <li class="nav-item">
           <a class="nav-link text-light" href="#">Mis datos</a>
