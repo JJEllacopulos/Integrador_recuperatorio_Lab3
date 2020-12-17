@@ -318,4 +318,12 @@ CREATE PROCEDURE PRO_ListarMisReservas(
         WHERE  Reservacion_de_habitacion.nombre_usuario = ing_Usuario;
       
 	END$$
-    
+    DELIMITER $$
+    CREATE PROCEDURE PRO_Listar_usuario_full()
+            	    
+	BEGIN
+	
+		 select * from usuario;
+
+END$$ 
+ 

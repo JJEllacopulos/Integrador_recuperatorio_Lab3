@@ -3,6 +3,8 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+
 
 import Dao.UsuarioDao;
 import Entidades.Usuario;
@@ -96,6 +98,58 @@ public class UsuarioDaoImpl implements UsuarioDao  {
 			
 			return aux;
 	}
+
+	@Override
+	
+public ArrayList<Usuario> Obtener_lista_usuarios(){
+		
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ArrayList<Usuario> x = new ArrayList<Usuario>();
+			
+			Connection cn = null;
+			
+			try {
+				
+				cn = DriverManager.getConnection(host+dbName, user,pass);
+				CallableStatement st = cn.prepareCall("CALL PRO_Listar_usuario_full");
+				
+				
+				ResultSet resultado = st.executeQuery();
+
+				while(resultado.next()){
+				
+					Usuario aux = new Usuario();
+					aux.setNombre_usuario(resultado.getString("nombre_usuario"));
+					aux.setDni_usuario(resultado.getString("dni_usuario"));
+					aux.setNombre_real(resultado.getString("nombre_real"));
+					aux.setApellido_real(resultado.getString("apellido_real"));
+					aux.setContrasena_usuario(resultado.getString("contraseña_usuario"));
+					aux.setSexo(resultado.getString("sexo"));
+					aux.setFecha_nacimiento(resultado.getString("fecha_nacimiento"));
+					aux.setEmail(resultado.getString("email_usuario"));
+					aux.setEstado(resultado.getBoolean("estado"));
+
+					
+					x.add(aux);
+					
+				}
+				
+			}
+			catch(Exception e) {
+				
+				e.printStackTrace();
+				
+			}
+			
+			return x;
+			
+		}
 
 	
 

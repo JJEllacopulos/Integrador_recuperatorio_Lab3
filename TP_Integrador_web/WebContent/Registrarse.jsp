@@ -56,6 +56,20 @@ if(filas > 0){%>
   </button>
 </div>
 <% }}%>
+
+<% 
+
+
+if(request.getAttribute("mensaje")!=null){
+	
+%>
+<div id="hola" class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>¡Hola!</strong> Por favor, ingrese datos que no existan en la página.
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<% }%>
 <div class="container mt-5">
 
 <h1 class="text-primary text-center">Registrarse</h1>
