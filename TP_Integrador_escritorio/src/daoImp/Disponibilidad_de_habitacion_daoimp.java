@@ -49,6 +49,36 @@ public class Disponibilidad_de_habitacion_daoimp implements Disponibilidad_de_ha
 		  return filas;
 	}
 	
+public int Refreshinsert(Disponibilidad_de_habitacion disponibilidad_de_habitacion) {
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		int	filas = 0;
+		Connection cn = null;
+		try
+		{
+			 cn = DriverManager.getConnection(host+dbName, user,pass);
+			
+			 
+			 CallableStatement cst = cn.prepareCall("CALL PRO_Refresh_Disponivilidad_de_habitacion(?,?,?,?)");
+			 cst.setString(1, disponibilidad_de_habitacion.getId_habitacion());
+			 cst.setDate(2,  java.sql.Date.valueOf(disponibilidad_de_habitacion.getFecha_inicio()));
+			 cst.setDate(3,  java.sql.Date.valueOf(disponibilidad_de_habitacion.getFecha_final()));
+			 cst.setString(4, disponibilidad_de_habitacion.getDetalles());
+	 
+			 filas=cst.executeUpdate();
+		  }
+		  catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		  return filas;
+	}
+	
 	public ArrayList<Disponibilidad_de_habitacion> readAll() {
 		
 		

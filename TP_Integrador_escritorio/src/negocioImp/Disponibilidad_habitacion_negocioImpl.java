@@ -11,7 +11,8 @@ public class Disponibilidad_habitacion_negocioImpl implements Disponibilidad_hab
 	public int insert(Disponibilidad_de_habitacion disponibilidad_de_habitacion) {
 		// TODO Auto-generated method stub
 		int filas = 0;
-		filas = daoDisponibilidad.insert(disponibilidad_de_habitacion);
+		daoDisponibilidad.Refreshinsert(disponibilidad_de_habitacion);
+		filas = daoDisponibilidad.insert(disponibilidad_de_habitacion);	
 		return filas;
 	}
 

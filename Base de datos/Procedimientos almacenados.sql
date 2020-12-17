@@ -220,13 +220,57 @@ CREATE PROCEDURE PRO_DisponibilidadPorFechas(
 		SELECT Habitacion.id_habitacion, Calidad_habitacion.nombre, Calidad_habitacion.detalles
         FROM  Habitacion
         INNER JOIN Calidad_habitacion ON Habitacion.id_calidad_habitacion = Calidad_habitacion.id_calidad_habitacion
-        WHERE Habitacion.id_habitacion NOT IN (
+        WHERE  
+        
+        Habitacion.id_habitacion IN (
 		SELECT Disponivilidad_de_habitacion.id_habitacion
         FROM  Disponivilidad_de_habitacion
-        WHERE (ing_Fecha1 BETWEEN Disponivilidad_de_habitacion.fecha_inicio AND Disponivilidad_de_habitacion.fecha_final) 
-        OR (ing_Fecha2 BETWEEN Disponivilidad_de_habitacion.fecha_inicio AND Disponivilidad_de_habitacion.fecha_final) 
-		) AND Calidad_habitacion.nombre = ing_Calidad;
+        WHERE ((ing_Fecha1 >= Disponivilidad_de_habitacion.fecha_inicio AND ing_Fecha2 <= Disponivilidad_de_habitacion.fecha_final) 
+		AND Disponivilidad_de_habitacion.reservacion = 0 ) 
+        AND IF (ing_Calidad!= 'Todas' , Calidad_habitacion.nombre = ing_Calidad ,Calidad_habitacion.nombre != ing_Calidad));
+        
+        
 	END$$
+
+DELIMITER $$
+	CREATE PROCEDURE PRO_Refresh_Disponivilidad_de_habitacion(
+
+		ing_id_habitacion INT,
+		ing_fecha_inicio DATE,
+		ing_fecha_final DATE,
+        ing_detalles VARCHAR(200)
+		
+        )
+		
+	BEGIN
+
+IF EXISTS(SELECT * FROM Disponivilidad_de_habitacion WHERE id_habitacion=ing_id_habitacion AND reservacion = 0
+AND (fecha_inicio between ing_fecha_inicio AND ing_fecha_final)) THEN
+        BEGIN
+            UPDATE Disponivilidad_de_habitacion  
+			SET fecha_inicio = ing_fecha_inicio
+            WHERE id_habitacion=ing_id_habitacion AND reservacion = 0;
+        END;
+        ELSE
+        BEGIN
+           
+        END;
+    END IF;
+IF EXISTS(SELECT * FROM Disponivilidad_de_habitacion WHERE id_habitacion=ing_id_habitacion AND reservacion = 0
+AND (fecha_final between ing_fecha_inicio AND ing_fecha_final)) THEN
+        BEGIN
+            UPDATE Disponivilidad_de_habitacion  
+			SET fecha_final = ing_fecha_final
+            WHERE id_habitacion=ing_id_habitacion AND reservacion = 0;
+        END;
+        ELSE
+        BEGIN
+           
+        END;
+    END IF;
+
+	END$$
+
 
 
 
