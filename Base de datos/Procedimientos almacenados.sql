@@ -217,21 +217,28 @@ CREATE PROCEDURE PRO_DisponibilidadPorFechas(
 		
 	BEGIN
 
-
 		SELECT Habitacion.id_habitacion, Calidad_habitacion.nombre, Habitacion.detalles
         FROM  Habitacion
         INNER JOIN Calidad_habitacion ON Habitacion.id_calidad_habitacion = Calidad_habitacion.id_calidad_habitacion
-        WHERE  
+        WHERE  (Habitacion.estado = 1) AND  
         
-        Habitacion.id_habitacion IN (
+        (Habitacion.id_habitacion NOT IN (
+		SELECT Disponivilidad_de_habitacion.id_habitacion
+        FROM  Disponivilidad_de_habitacion
+        WHERE (((ing_Fecha1 BETWEEN Disponivilidad_de_habitacion.fecha_inicio AND Disponivilidad_de_habitacion.fecha_final) 
+        OR (ing_Fecha2 BETWEEN Disponivilidad_de_habitacion.fecha_inicio AND Disponivilidad_de_habitacion.fecha_final) )
+		AND Disponivilidad_de_habitacion.reservacion = 1 )))
+        
+        AND (Habitacion.id_habitacion IN (
 		SELECT Disponivilidad_de_habitacion.id_habitacion
         FROM  Disponivilidad_de_habitacion
         WHERE ((ing_Fecha1 >= Disponivilidad_de_habitacion.fecha_inicio AND ing_Fecha2 <= Disponivilidad_de_habitacion.fecha_final) 
-		AND Disponivilidad_de_habitacion.reservacion = 0 ) 
-        AND IF (ing_Calidad!= 'Todas' , Calidad_habitacion.nombre = ing_Calidad ,Calidad_habitacion.nombre != ing_Calidad));
+		AND Disponivilidad_de_habitacion.reservacion = 0 )))
         
+        AND IF (ing_Calidad!= 'Todas' , Calidad_habitacion.nombre = ing_Calidad ,Calidad_habitacion.nombre != ing_Calidad);
         
 	END$$
+
 
 DELIMITER $$
 	CREATE PROCEDURE PRO_Refresh_Disponivilidad_de_habitacion(
@@ -315,7 +322,8 @@ CREATE PROCEDURE PRO_ListarMisReservas(
         INNER JOIN Disponivilidad_de_habitacion ON Disponivilidad_de_habitacion.id_disponivilidad_de_habitacion = Reservacion_de_habitacion.id_disponivilidad_de_habitacion
         INNER JOIN Habitacion ON Disponivilidad_de_habitacion.id_habitacion = Habitacion.id_habitacion
         INNER JOIN Calidad_habitacion ON Habitacion.id_calidad_habitacion = Calidad_habitacion.id_calidad_habitacion
-        WHERE  Reservacion_de_habitacion.nombre_usuario = ing_Usuario;
+        WHERE  Reservacion_de_habitacion.nombre_usuario = ing_Usuario AND Habitacion.estado = 1;
       
 	END$$
+    
     

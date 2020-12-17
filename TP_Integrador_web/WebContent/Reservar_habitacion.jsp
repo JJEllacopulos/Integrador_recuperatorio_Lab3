@@ -45,7 +45,7 @@
 
 <jsp:include page="MenuCliente.jsp"></jsp:include>
 
-	<form action="ServletsReserva" method="post">
+	 <form action="ServletsReserva" method="post">
 	
  <div class="container">
 <div class="form-row mt-4">
@@ -76,10 +76,10 @@
 			{
 		if (primero){
 			%> <option value="Todas">Todas</option> <% 
-		}else {
+		}
 	%>	
 	<option value="<%=e.getNombre() %>"><%=e.getNombre()%></option>
-		<% }primero=false; }%>
+		<% primero=false; }%>
 		
 		
 		</select>
@@ -99,9 +99,10 @@
   </div>
   
   <input type="submit"  class="btn btn-success mt-5 centrar" value="Buscar Disponibilidad" name="btnDisponibilidad">
+  
       </div>	
 </div>
-   
+  </form> 
  <%
 	
 	ArrayList<Calidad_habitacion> lista1 = new ArrayList<Calidad_habitacion>();
@@ -128,11 +129,15 @@
   </thead>
   <tbody>
     <tr>
+    <form action="ServletsReserva" method="post">
+    <input type="hidden" class="form-control" value="<%=request.getAttribute("Fecha1")%>" name="Fecha1" >
+     <input type="hidden" class="form-control" value="<%=request.getAttribute("Fecha2")%>" name="Fecha2" >
       <td class="text"><b><%= e.getId_calidad_habitacion() %> <input type="hidden" name="id_hab" value="<%= e.getId_calidad_habitacion() %>"></b></td>
       <td class="text"><b><%= e.getNombre() %></b></td>
        <td class="text"><b><%= e.getDetalles() %></b></td>
-    <td> <button type="submit" class="btn btn-primary btnDD" name="btn_SeleccionHabitacion" >Reservar</button> </td>
+    <td> <button type="submit" class="btn btn-primary btnDD" name="btn_SeleccionHabitacion" >Reservar</button> </td> 
       <td></td> 
+        </form>
     </tr>
 
      <% } }%>
@@ -145,7 +150,7 @@
 
  </script>
 </div>
- </form>
+
   
 </body>
 </html>

@@ -128,7 +128,10 @@ public class ServletsReserva extends HttpServlet {
 	    	dispo.setDetalles("Reserva");
 	    	
 	    	NegDispo.insert(dispo);
-	    		    	
+	    		    			
+    		MisRes = dispoNeg.MisRes(usuario.getNombre_usuario());
+    		request.setAttribute("MisReservas", MisRes);
+    		
 	    	RequestDispatcher rd = request.getRequestDispatcher("/MisReservas.jsp");   
 	        rd.forward(request, response); 
 	    	
