@@ -85,6 +85,4 @@ public class Habitaciones_agregar extends JPanel {
 	public void setTextoDescripcion(JTextField textoDescripcion) {
 		this.textoDescripcion = textoDescripcion;
 	}
-
-
 }

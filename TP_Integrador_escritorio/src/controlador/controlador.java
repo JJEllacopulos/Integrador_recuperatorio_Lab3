@@ -48,20 +48,24 @@ public class controlador implements ActionListener{
 		this.habitaciones_listar = new Habitaciones_listar();
 		this.habitaciones_modificar = new Habitaciones_modificar();
 		this.disponibilidad_agregar = new Disponibilidad_agregar();
+	
 		
+		//Eventos de menu desplegable
 		this.ventana_principal.getMntmAgregar_hab().addActionListener(a->EventoClickMenu_habitacion_agregar(a));
 		this.ventana_principal.getMntmBorrar().addActionListener(a->EventoClickMenu_habitaciones_borrar(a));
 		this.ventana_principal.getMntmListar().addActionListener(a->EventoClickMenu_habitaciones_listar(a));
 		this.ventana_principal.getMntmModificar().addActionListener(a->EventoClickMenu_habitaciones_modificar(a));
 		this.ventana_principal.getMntmAgregar_dis().addActionListener(a->EventoClickMenu_disponibilidad_agregar(a));
 		
+		
+		//Eventos de botón aceptar
 		this.habitaciones_agregar.getBtnAceptar().addActionListener(a->EventoClick_Agregar_Aceptar(a));
 		this.habitaciones_modificar.getBtnAceptar().addActionListener(a->EventoClick_Modificar_Aceptar(a));
 		this.habitaciones_borrar.getBtnBorrar().addActionListener(a->EventoClick_Borrar_Aceptar(a));
 		this.disponibilidad_agregar.getBtnAgregar().addActionListener(a->EventoClick_Aceptar_AgregarDisponibilidad(a));
 	}
 	
-	
+	//función de abrir ventana agregar
 	public void  EventoClickMenu_habitacion_agregar(ActionEvent a)
 	{		
 		
@@ -73,6 +77,7 @@ public class controlador implements ActionListener{
 		ventana_principal.getContentPane().revalidate();
 	}
 	
+	//función de abrir ventana borrar
 	public void  EventoClickMenu_habitaciones_borrar(ActionEvent a)
 	{		
 		ventana_principal.getContentPane().removeAll();
@@ -81,6 +86,7 @@ public class controlador implements ActionListener{
 		ventana_principal.getContentPane().revalidate();
 	}
 	
+	//función de abrir ventana borrar
 	public void  EventoClickMenu_habitaciones_listar(ActionEvent a)
 	{		this.habitaciones_listar.refrescarTabla();
 		ventana_principal.getContentPane().removeAll();
@@ -89,6 +95,7 @@ public class controlador implements ActionListener{
 		ventana_principal.getContentPane().revalidate();
 	}
 	
+	//función de abrir ventana modificar
 	public void  EventoClickMenu_habitaciones_modificar(ActionEvent a)
 	{	listaCalidad = negCalidad.readAll();
 		this.habitaciones_modificar.setComboBoxCalidad(listaCalidad);
@@ -98,14 +105,18 @@ public class controlador implements ActionListener{
 		ventana_principal.getContentPane().revalidate();
 	}
 	
+	//función de abrir ventana agregar
 	public void  EventoClickMenu_disponibilidad_agregar(ActionEvent a)
 	{	
-
+		
 		ventana_principal.getContentPane().removeAll();
 		ventana_principal.getContentPane().add(disponibilidad_agregar);
 		ventana_principal.getContentPane().repaint();
 		ventana_principal.getContentPane().revalidate();
 	}
+	
+	
+	//Eventos de botones
 	public void EventoClick_Agregar_Aceptar(ActionEvent a) {
 		
 		calidad = (Calidad_habitacion)this.habitaciones_agregar.getCbCalidad().getSelectedItem();

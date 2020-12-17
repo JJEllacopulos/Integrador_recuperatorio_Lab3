@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,10 +34,9 @@ margin-left: 70%;
 <jsp:include page="Barra_inicio.jsp"></jsp:include>
 
 
-
     <div class="container Concreto ">        
     <div class="jumbotron Presentacion">
-        <h1 class=" text-light">¡Bienvenido!</h1>
+        <h1 class=" text-light">¡Hola!</h1>
         <p class="lead text-light">¡Estás a pocos clicks de reservar tu habitación! Registrate o iniciá sesión si ya tenés tu cuenta.</p>
         <p>
             <a href="Login.jsp" class="btn btn-primary btn-lg">Iniciar Sesión &raquo;</a>
