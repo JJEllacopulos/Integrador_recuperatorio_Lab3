@@ -1,5 +1,7 @@
 package NegocioImpl;
 
+import java.util.ArrayList;
+
 import Dao.UsuarioDao;
 import DaoImpl.UsuarioDaoImpl;
 import Entidades.Usuario;
@@ -21,6 +23,12 @@ public class UsuarioNegocioImpl implements UsuarioNegocio {
 		usuario = usuarioDao.Obtener_usuario(nombreUsuario);
 		
 		return usuario;
+	}
+	@Override
+	public ArrayList<Usuario> Obtener_lista_usuarios() {
+		// TODO Auto-generated method stub
+		ArrayList<Usuario> listaUsuario = usuarioDao.Obtener_lista_usuarios();
+		return listaUsuario;
 	}
 	
 }

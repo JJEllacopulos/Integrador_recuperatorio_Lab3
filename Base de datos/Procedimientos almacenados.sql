@@ -326,4 +326,13 @@ CREATE PROCEDURE PRO_ListarMisReservas(
       
 	END$$
     
-    
+ DELIMITER $$
+    CREATE PROCEDURE PRO_Listar_usuario_full()
+            	    
+	BEGIN
+	
+		 select * from usuario;
+
+END$$ 
+
+
