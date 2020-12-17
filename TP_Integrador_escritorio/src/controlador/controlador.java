@@ -197,7 +197,7 @@ public class controlador implements ActionListener{
 		if(!((disponibilidad_agregar.getFechaInicio().getDate() == null) ||
 				(disponibilidad_agregar.getFechaFinal().getDate() == null) ||
 				disponibilidad_agregar.getDetallesHabitacion().getText().equals("") || 
-				id.equals("") || controlador.isNumeric(id)==false)) {
+				id.equals("") || controlador.isNumeric(id)==false ) ) {
 			
 			String fechaInicio = sdf.format(disponibilidad_agregar.getFechaInicio().getDate());
 			String fechaFinal = sdf.format(disponibilidad_agregar.getFechaFinal().getDate());
@@ -209,10 +209,10 @@ public class controlador implements ActionListener{
 			disponibilidad.setDetalles(detalle);
 			disponibilidad.setId_habitacion(nroHabitacion);			
 			
-			if(negDisponibilidad.insert(disponibilidad)>0) {
+			if(negDisponibilidad.insert(disponibilidad)>0 && disponibilidad_agregar.getFechaInicio().getDate().before(disponibilidad_agregar.getFechaFinal().getDate())) {
 				mensaje = "Se agregó la disponibilidad correctamente";
 			}else {
-				mensaje = "Por favor, ingrese un número de habitación existente.";
+				mensaje = "Por favor, verifique el numero de habitación y las fechas.";
 			}
 			
 		}else {
